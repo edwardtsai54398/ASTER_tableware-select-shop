@@ -1,0 +1,71 @@
+@import "reset";
+//------變數
+//text
+$font-xl: 36px;
+$font-l: 30px;
+$font-m: 20px;
+$font-s: 16px;
+$font-xs: 12px;
+$font-prim: Marcellus,'Noto Serif TC';
+$font-scnd: 'Microsoft JhengHei UI', 'TW Cen MT';
+//color
+$primary: #0F405F;
+$bg: #EEE5DA;
+$secondary: #B58C67;
+$success: #425E44;
+$btn: #3f3f3f;
+$link-hover: #738490;
+//size
+$btn-h: 48px;
+
+//------base
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+TC:wght@500&display=swap');
+body{
+    font-family: Marcellus,'Noto Serif TC', 
+    'SeoulHangang CEB', 'TW Cen MT', 'Linux Libertine G Regular', 'Microsoft JhengHei UI', Arial, Helvetica, sans-serif;
+    background-color: $bg;
+}
+*{
+    box-sizing: border-box;
+    color: $primary;
+    letter-spacing: 2px;
+}
+a{
+    text-decoration: none;
+}
+
+.d-flex{
+    display: flex;
+}
+.container{
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.color-block{
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute; 
+        bottom: -4px; 
+        left: -12px; 
+        width: calc(100% + 24px);
+        height: 13px; 
+        background-color: $primary;
+        opacity: 0.2; 
+        z-index: -1;
+    }
+}
+
+
+@import "mixin";
+@import "layout";
+@import "index";
+@import "shop";
+@import "about";
+@import "product";
+@import "journal";
+@import "article";
+@import "cart";
+@import "login";
+@import "register";

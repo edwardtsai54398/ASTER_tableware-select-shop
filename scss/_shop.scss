@@ -1,0 +1,132 @@
+.--shopall .header{
+    background-image: url(../image/shopall/header_shop_bg.png);
+}
+.--shopall .container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 1550px;
+}
+.breadcrumb{
+    margin-top: 30px;
+    padding-left: 390px;
+    display: flex;
+}
+
+.crumb{
+    margin-right: 55px;
+    font-size: $font-xs;
+    text-transform: capitalize;
+    position: relative;
+    a{
+        @include hover-style($link-hover);
+    }
+    & + li::before{
+        content: "";
+        display: block;
+        width: 15px;
+        height: 15px;
+        background-image: url(../image/angle-right-blue.svg);
+        background-repeat: no-repeat;
+        position: absolute;
+        left: -35px;
+    }
+}
+
+.--shopall .shop_nav{
+    @include shop-nav(30px, $font-l);
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+    padding-bottom: 250px;
+}
+.shop_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.shop_list{
+    width: 1126px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 566px 410px 566px;
+    gap: 2px;
+    background-color: #000;
+    margin-bottom: 80px;
+}
+.shop_item{
+    background-color: $bg;
+    padding: 20px;
+    text-align: center;
+    .img{
+        width: 100%;
+        overflow: hidden;
+        img{
+            width: 100%;
+        }    
+    }
+    @include hover-style;
+}
+
+.i1, .i8{
+    grid-column: 1/4 span;
+}
+.i2, .i9{
+    grid-column: 5/4 span;
+}
+.i3, .i10{
+    grid-column: 9/4 span;
+}
+.i4{
+    grid-column: 1/3 span;
+}
+.i5{
+    grid-column: 4/3 span;
+}
+.i6{
+    grid-column: 7/3 span;
+}
+.i7{
+    grid-column: 10/3 span;
+}
+.i1, .i2, .i3, .i8, .i9, .i10{
+    font-size: $font-s;
+    .img{
+        height: 454px;
+        margin-bottom: 20px;
+    }
+    .name{
+        margin-bottom: 12px;
+    }
+}
+.i4, .i5, .i6, .i7{
+    
+    font-size: $font-s;
+    .img{
+        height: 318px;
+        margin-bottom: 14px;
+    }
+    .name{
+        margin-bottom: 8px;
+    }
+}
+.pagenation{
+    display: flex;
+    font-size: $font-s;
+    ol{
+        display: flex;
+        gap: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        .color-block.small{
+            &::after{
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+    .page_next, .page_prev{
+        @include hover-style;
+    }
+}

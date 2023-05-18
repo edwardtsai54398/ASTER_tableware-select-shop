@@ -1,0 +1,147 @@
+@mixin img-replace-h1($w, $h, $bgurl){
+    display: inline-block;
+    width: $w;
+    height: $h;
+    background-image: url($bgurl);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-indent:101%;
+    overflow:hidden;
+    white-space:nowrap;
+}
+@mixin text-ellipsis{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+@mixin color-mask($color){
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color;
+        z-index: 1;       
+    }
+}
+@mixin img-fit{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+@mixin clearfix {
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+}
+//----shape
+@mixin circle($size, $color, $border:null, $shadow:null){
+    width: $size;
+    height: $size;
+    background-color: $color;
+    border-radius: 50%;
+    @if $border{
+        border: $border;
+    }
+    @if $shadow{
+        box-shadow: $shodow;
+    }
+}
+@mixin pill-v($w, $h){
+    width: $w;
+    height: $h;
+    border-top-left-radius: calc($w/2);
+    border-top-right-radius: calc($w/2);
+    border-bottom-left-radius: calc($w/2);
+    border-bottom-right-radius: calc($w/2);
+}
+@mixin pill-h($w, $h){
+    width: $w;
+    height: $h;
+    border-top-left-radius: calc($h/2);
+    border-top-right-radius: calc($h/2);
+    border-bottom-left-radius: calc($h/2);        border-bottom-right-radius: calc($h/2);
+}
+@mixin arched($w, $h){
+    width: $w;
+    height: $h;
+    border-top-left-radius: calc($w/2);
+    border-top-right-radius: calc($w/2);
+}
+//------component
+@mixin func_btn($w){
+    width: $w;
+    background-color: $btn;
+    height: $btn-h;
+    line-height: $btn-h;
+    color: #fff!important;
+    text-align: center;
+    font-size: $font-s;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        background-color: #000;
+    }
+}
+@mixin shop-nav($gap, $fz){
+    .shop_nav_list{
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .shop_nav_item{
+            font-size: $fz;
+            text-transform: uppercase;
+            padding: calc($gap/2) 0px;
+            width: fit-content;
+            .link_vector{
+                margin-left: 16px;
+                width: 100px;
+                transition: 0.4s;
+            }
+            .hover_img{
+                opacity: 0;
+                position: absolute;
+                top: 0px;
+                left: 5em;
+                width: 304px;
+                height: 404px;
+                overflow: hidden;
+                z-index: -1;
+                transition: 0.5s;
+                pointer-events: none;
+                img{
+                    @include img-fit;
+                }
+            }
+            &:hover{
+                .link_vector{
+                    margin-left: 0px;
+                }
+                a{
+                    position: relative;
+                    z-index: 2;
+                }
+                .hover_img{
+                    opacity: 0.9;
+                    left: 2em;
+                    z-index: 1;
+                }
+            }
+        }
+    }   
+}
+@mixin hover-style($color: null){
+    &:hover{
+        text-decoration: underline;
+        @if $color{
+            color: $color;
+        }
+    }
+}

@@ -1,0 +1,298 @@
+.--index .header {
+    background-image: url(../image/index/index_header_bg.png);
+    grid-template-rows: 108px 540px;
+}
+
+.--index .header .title {
+    padding-top: 230px;
+    padding-left: 280px;
+    text-transform: none;
+}
+
+.CHT {
+    font-size: $font-l;
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.ENG {
+    font-size: $font-s;
+    line-height: 2;
+}
+
+.arrival_head {
+    padding: 115px 30px 0;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h4 {
+        font-size: $font-m;
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: 30px;
+    }
+
+    .dashline {
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .viewall {
+        align-self: flex-end;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.5s;
+
+            span {
+                font-size: 14px;
+            }
+
+            img {
+                height: 10px;
+                order: -1;
+            }
+
+            @include hover-style;
+
+            &:hover {
+                gap: 4px;
+            }
+        }
+    }
+}
+
+.arrival_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 578px);
+    gap: 40px 50px;
+    align-items: center;
+    margin-bottom: 72px;
+}
+
+.arrival_item {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: $font-s;
+    @include hover-style;
+    .img {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        margin-bottom: 30px;
+
+        img {
+            width: 105%;
+        }
+    }
+
+    .name {
+        margin-bottom: 14px;
+    }
+
+    &:nth-child(odd) {
+        .img {
+            height: 376px;
+            img{
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+.brand{
+    height: 940px;
+    background-color: $primary;
+    .container{
+        position: relative;
+        padding-top: 90px;
+        padding-left: 35px;
+        height: 100%;
+    }
+    *{
+        color: $bg;
+    }
+    h4{
+        font-size: $font-l;
+    }
+}
+.img-1, .img-2, .img-3{
+    overflow: hidden;
+}
+.img-1{
+    width: 206px;
+    height: 272px;
+    position: absolute;
+    top: 493px;
+    left: 46px;
+}
+
+.img-2{
+    @include arched(460px, 960px);
+    position: absolute;
+    top: 67px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.img-3{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 242px;
+    right: 76px;
+}
+.brand_intro{
+    position: absolute;
+    top: 567px;
+    right: 28px;
+    width: 280px;
+    h3{
+        font-size: $font-l;
+        margin-bottom: 30px;
+    }
+    p{
+        font-size: $font-s;
+        line-height: 2;
+    }
+}
+.shop_and_journal{
+    display: grid;
+    grid-template-rows: 890px;
+    grid-template-columns: repeat(2, 1fr);
+    background-image: url(../image/dashline_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    h5{
+        font-size: $font-xl;
+        text-transform: uppercase;
+        opacity: 0.3;
+        text-shadow: 1px 1px white, -1px -1px #444;
+        position: absolute;
+        top: 50%;
+    }
+}
+.journal-block{
+    position: relative;
+    h5{
+        right: 24%;
+        transition: 0.5s;
+    }
+    &:hover .journal_box{
+        right: 10%;
+    }
+    &:hover h5{
+        opacity: 0;
+        right: 10%;
+    }
+}
+.journal_box{
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    height: 414px;
+    display: flex;
+    flex-flow: row-reverse;
+    width: fit-content;
+    background-color: rgba(256,256,256,0.4);
+    transition: 0.3s;
+    .article{
+        a{
+            display: flex;
+            height: 100%;
+            border: 4px solid #000;
+        }
+        &+.article{
+            margin-right: 4px;
+        }
+    }
+    .article_title{
+        font-size: $font-l;
+        writing-mode: vertical-lr;
+        padding: 12px 18px;
+        border-right: 4px solid #000;
+        h3{
+            @include text-ellipsis;
+        }
+    }
+    .article_pic{
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+        .img{
+            width: 440px;
+            height: 330px;
+            overflow: hidden;
+            position: relative;
+            @include color-mask(rgba(256,256,256,0.4));
+            img{
+                @include img-fit;
+            }        
+            h3{
+                font-size: $font-m;
+                width: 95%;
+                color: $bg;
+                line-height: 1.5;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                right: 0;
+                margin: auto;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+
+.is-visible.article{
+    .article_title{
+        width: 0;
+        padding: 12px 0;
+        border-right: none;
+        overflow: hidden;
+    }
+    .article_pic{
+        width: fit-content;
+        padding: 36px;
+    }
+}
+
+.shop-block{
+    position: relative;
+    overflow: hidden;
+    h5{
+        left: 24%;
+        transition: 0.5s;
+    }
+    .shop_nav{
+        @include shop-nav(36px, $font-xl);
+        ul{width: 450px;}
+    }
+    &:hover .shopnav_box{
+        left: 10%;
+    }
+    &:hover h5{
+        opacity: 0;
+        left: 10%;
+    }
+}
+.shopnav_box{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 100%;
+    transition: 0.3s;
+}

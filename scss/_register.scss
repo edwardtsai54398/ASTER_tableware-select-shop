@@ -1,0 +1,29 @@
+.--register .container fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register_input_group{
+    display: grid;
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(4, 26px);
+    gap: 30px 20px;
+    margin-bottom: 12px;
+}
+.email-register, .password-register, .confirm-register{
+    grid-column: 1/2 span;
+}
+.--register .is-registed{
+    visibility: hidden;
+    color: $secondary;
+    *{color: $secondary;}
+    font-size: $font-xs;
+    text-align: center;
+    margin-bottom: 32px;
+    a:hover{
+        text-decoration: underline;
+    }
+}
+.is-registed.visible{
+    visibility: visible;
+}

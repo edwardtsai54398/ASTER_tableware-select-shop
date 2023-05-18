@@ -1,0 +1,86 @@
+.--article .container{
+    padding-top: 180px;
+    padding-bottom: 200px;
+}
+.--article  header.article_title{
+    text-align: center;
+    margin-bottom: 140px;
+    .title{
+        margin-right: 60px;
+        h5{
+            font-size: $font-s;
+            opacity: 0.7;
+            margin-bottom: 45px;
+        }
+        h3{
+            font-size: $font-l;
+            margin-bottom: 20px;
+        }
+        .journal_date{
+            font-size: $font-xs;
+            margin-bottom: 150px;
+        }
+    }
+    .img{
+        width: 100%;
+        height: 570px;
+        img{
+            @include img-fit;
+        }
+    }
+}
+.article_content{
+    *{
+        color: #000;
+        letter-spacing: 1px;
+    }
+    display: flex;
+    justify-content: space-between;
+    .text{
+        width: 535px;
+        font-size: $font-xs;
+        line-height: 2;
+        p+p{
+            margin-top: 30px;
+        }
+    }
+}
+.--article .other_article{
+    width: 440px;
+    h5{
+        font-size: $font-xs;
+        padding: 10px 0;
+        border-bottom: 1px solid #000;
+    }
+    .article_item{
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        font-size: $font-xs;
+        .img{
+            width: 82px;
+            height: 100px;
+            margin-right: 12px;
+            img{
+                @include img-fit;
+            }
+        }
+    }
+}
+.--article .article_info{
+    width: 280px;
+    gap: 18px 0;
+    h3{
+        font-size: $font-xs;
+    }
+    .readmore{
+        justify-self: end;
+        img{
+            width: 30px;
+            transform: translateX(-8px);
+        }
+        &:hover img{
+            transform: translateX(-3px);
+        }
+    }
+}
