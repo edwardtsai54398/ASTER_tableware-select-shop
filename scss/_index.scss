@@ -20,6 +20,21 @@
     line-height: 2;
 }
 
+.gotop{
+    position: fixed;
+    bottom: 90px;
+    right: 120px;
+    opacity:0;
+    transform:translateX(10px);
+    transition: 0.5s;
+    z-index: 1;
+}
+.gotop.btn-show{
+    opacity:1;
+    transform:translateX(0px);
+    transition: 0.5s;
+}
+
 .arrival_head {
     padding: 115px 30px 0;
     margin-bottom: 32px;
@@ -170,9 +185,7 @@
     display: grid;
     grid-template-rows: 890px;
     grid-template-columns: repeat(2, 1fr);
-    background-image: url(../image/dashline_icon.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+    position: relative;
     h5{
         font-size: $font-xl;
         text-transform: uppercase;
@@ -181,6 +194,15 @@
         position: absolute;
         top: 50%;
     }
+}
+.devide_line{
+    width: 1px;
+    height: 400px;
+    background-image:  url(../image/dashline_icon.svg);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
 }
 .journal-block{
     position: relative;
@@ -199,7 +221,7 @@
 .journal_box{
     position: absolute;
     top: 50%;
-    right: 100%;
+    right: 10%;
     transform: translateY(-50%);
     height: 414px;
     display: flex;
@@ -222,6 +244,7 @@
         writing-mode: vertical-lr;
         padding: 12px 18px;
         border-right: 4px solid #000;
+        transition: 0.8s;
         h3{
             @include text-ellipsis;
         }
@@ -230,33 +253,36 @@
         width: 0;
         padding: 0;
         overflow: hidden;
+        transition: 0.8s;
         .img{
-            width: 440px;
-            height: 330px;
+            width: 100%;
+            height: 250px;
             overflow: hidden;
-            position: relative;
-            @include color-mask(rgba(256,256,256,0.4));
+            margin-bottom: 36px;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
             img{
                 @include img-fit;
             }        
-            h3{
-                font-size: $font-m;
-                width: 95%;
-                color: $bg;
-                line-height: 1.5;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 0;
-                right: 0;
-                margin: auto;
-                z-index: 2;
-            }
+            
+        }
+        h3{
+            opacity: 0;
+            position: relative;
+            top: 40px;
+            font-size: $font-m;
+            text-align: center;
+            padding: 8px;
+            border: 2px solid #000;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+            transition: 0.3s transform , 
+                        0.5s 0.8s opacity,
+                        0.5s 0.8s top;
+        }
+        &:hover{
+            h3{transform: translate(3px, -3px);}
         }
     }
 }
-
-
 .is-visible.article{
     .article_title{
         width: 0;
@@ -265,8 +291,12 @@
         overflow: hidden;
     }
     .article_pic{
-        width: fit-content;
+        width: 580px;
         padding: 36px;
+        h3{
+            opacity: 1;
+            top: 0;
+        }
     }
 }
 

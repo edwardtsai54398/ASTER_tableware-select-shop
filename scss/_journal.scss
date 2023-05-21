@@ -4,86 +4,153 @@
 .--journal .container{
     padding-top: 90px;
     padding-bottom: 120px;
-    display: flex;
-    gap: 20px;
-    & >*{
-        width: 50%;
-    }
-}
-
-.--journal .article_info,.--article .article_info{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    h3{
-        grid-column: 1/2 span;
-        line-height: 1.5;
-        
-    }
-    .readmore{
-        img{
-            display: inline-block;
-            transition: 0.3s;
-        }
-        &:hover{
-            text-decoration: underline;
-        }
-    }
+    width: 1500px;
+    position: relative;
 }
 .--journal .new_article, .--journal .other_article{
     .img{
-        width: 100%;
         overflow: hidden;
         img{
             @include img-fit;
         }
     }
 }
-.--journal .article_info{
-    gap: 20px 0;
-    .readmore{
-        img{
-            width: 45px;
-            transform: translateX(8px);
-        }
-        &:hover img{
-            transform: translateX(3px);
-        }
-    }
-    .article_date{
-        justify-self: end;
+
+.journal_category_tabs{
+    position: absolute;
+    right: 0;
+    height: calc(100% - 90px);
+    z-index: 1;
+}
+.tab-stickey{
+    position: sticky;
+    top: 0;
+    width: 60px;
+    margin-bottom: 600px;
+    &:hover{
+        .event{transform: translateY(200px);}
+        .stories{transform: translateY(calc(200px + 100%));}
+        .lifestyle{transform: translateY(calc(200px + 200%));}
+        .buynotes{transform: translateY(calc(200px + 300%));}
     }
 }
+.tabs_head, .tab{
+    width: 100%;
+    background-color: $bg;
+    writing-mode: vertical-lr;
+    text-align: center;
+    border: 2px solid #000;
+    margin-bottom: 2px;
+}
+.tabs_head{
+    height: 200px;
+    font-size: $font-l;
+    padding: 0 10px;
+}
+.tab{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.8s ease-out;
+    height: 150px;
+    padding: 0 15px;
+    font-size: $font-m;
+    &:hover{
+        background-color: $secondary;
+        color: $bg;
+    }
+}
+.event{z-index: -1;}
+.stories{z-index: -2;}
+.lifestyle{z-index: -3;}
+.buynotes{z-index: -4;}
 
 .--journal .new_article {
-    height: fit-content;
-    position: sticky;
-    top: 90px;
+    display: grid;
+    height: 690px;
+    grid-template-columns: 1125px 1fr;
+    grid-template-rows: 200px 280px 1fr;
+    border: 1px solid #000;
     .img{
-        height: 400px;
-        margin-bottom: 26px;
+        grid-row: 1/3 span;
+        padding: 75px 100px;
+        width: 100%;
+        height: 100%;
+        justify-self: center;
+        align-self: center;
+        border-right: 1px solid #000;
     }
-    .article_info{
-        padding: 0 12px;
-        h3{font-size: $font-m;}
+    .article_title{
+        align-self: flex-end;
+        padding:0 60px 16px 16px;
+        border-bottom: 1px solid #000;
+        .article_date{
+            font-size: $font-s;
+            margin-bottom: 14px;
+        }
+        h3{
+            font-size: $font-l;
+        }
+    }
+    .article_content{
+        color: rgba(0,0,0,0.5);
+        font-size: $font-s;
+        line-height: 1.5;
+        padding: 24px 60px 24px 24px;
+        border-bottom: 1px solid #000;
+    }
+    .readmore{
+        align-self: flex-end;
+        font-size: 70px;
+        line-height: 0.6;
+        padding: 24px;
+        &:hover{
+            text-decoration: underline;
+        }
     }
 }
 .--journal .other_article ul{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    .article_item{
-        width: calc((100% - 20px) / 2);
-        margin-bottom: 80px;
-        &:last-child, &:nth-last-child(2){
-            margin-bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 460px;
+    .article_item a{
+        padding: 30px 40px;
+        border: 1px solid #000;
+        border-top: none;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 245px 1fr;
+        & +li{
+            border: 1px solid #000;
+            border-top: none;
+            border-left: none;
         }
-    }
-
-    .img{
-        height: 260px;
-        margin-bottom: 20px;
-    }
-    .article_info{
-        font-size: $font-xs;
+        .article_date{
+            order: -1;
+        }
+        .fa-arrow-right{
+            transform: rotate(-45deg);
+            order: 1;
+            justify-self: end;
+            height: fit-content;
+            font-size: $font-l;
+        }
+        .img{
+            grid-column: 1/2 span;
+            order: 2;
+        }
+        h3{
+            order: 3;
+            grid-column: 1/2 span;
+            text-align: center;
+            align-self: center;
+        }
+        &:hover{
+            background-color: $secondary;
+            *{color: $bg;}
+        }
     }
 }

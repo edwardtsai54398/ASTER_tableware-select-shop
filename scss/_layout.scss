@@ -11,7 +11,7 @@
         padding-top: 27px;
         padding-left: 40px;
         h1{
-            @include img-replace-h1(100px,52px,'../image/LOGO.png');
+            @include img-replace-h1(255px,60px,'../image/LOGO.png');
             font-size: $font-xl;
         }
     }
@@ -50,7 +50,19 @@
     .side_navbar {
         padding-top: 63px;
         padding-left: 44px;
-        position: relative;
+    }
+}
+@keyframes underlineRun{
+    0%{width: 0;
+        left: 0;}
+    50%{
+        width: 100%;
+        left: 0;
+        background: linear-gradient(to right,rgba(255,255,255,0.1),$primary)
+    }
+    100%{
+        width: 0;
+        left: 200%;
     }
 }
 .navbar_list {
@@ -60,27 +72,56 @@
     .navbar_link {
         text-transform: capitalize;
         width: fit-content;
-        perspective: 200px;
-        a{
-            font-size: $font-m;
-            transition: 0.5s;
-            
-        }
-        &:hover{
-            h6:nth-child(1){
-                color: $link-hover;
+        min-width: 90px;
+        position: relative;
+        
+        & > a{
+            overflow: hidden;
+            display: block;
+            height: fit-content;
+            position: relative;
+            h6{
+                transition: 0.5s;
+            }
+            h6:last-child{
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                opacity: 0.8;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: linear-gradient(to right,rgba(255,255,255,0.1),$primary);
+                bottom: 0px;
+                left: -100%;
+                transition: 1.5s;
+            }
+            &:hover{
+                h6{
+                    transform: translateY(100%);
+                }
+                &::after{
+                    left: 100%;
+                }
             }
         }
+        a{
+            font-size: $font-m;
+            transition: 1s;
+        }
     }
-    
 }
 .category{
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
     position: absolute;
-    top: 0;
-    right: 100%;
+    top: -123px;
+    right: calc(100% + 44px);
     background-color: rgba(256, 256, 256, 0.4);
     padding: 25px;
     width: 600px;
@@ -114,17 +155,17 @@
             @include img-fit;
         }
     }
-    h6{
-        font-size: $font-s;
+    h5{
+        font-size: $font-m;
         transition: 0.3s;
     }
     &:hover{
-        h6{
+        h5{
             color: $link-hover;
         }
     }
 }
-.side_navbar .shop:hover{
+.navbar_list :hover{
     .category{
         opacity: 1;
         visibility: visible;
@@ -138,7 +179,7 @@
     padding: 116px 0 30px;
     display: grid;
     grid-template-columns: 1fr 466px 1fr;
-    grid-template-rows: 255px 52px 1fr;
+    grid-template-rows: 255px 90px 1fr;
     row-gap: 55px;
     align-items: center;
     * {
@@ -148,6 +189,8 @@
     .logo {
         grid-column: 1/3 span;
         justify-self: center;
+        height: 100%;
+        img{@include img-fit;}
     }
     
 }

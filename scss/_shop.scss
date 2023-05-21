@@ -50,7 +50,8 @@
     width: 1126px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 566px 410px 566px;
+    // grid-template-rows: 566px 410px 566px;
+    grid-template-rows: 566px 440px 566px;
     gap: 2px;
     background-color: #000;
     margin-bottom: 80px;
@@ -92,6 +93,7 @@
 }
 .i1, .i2, .i3, .i8, .i9, .i10{
     font-size: $font-s;
+    line-height: 1.5;
     .img{
         height: 454px;
         margin-bottom: 20px;
@@ -101,8 +103,8 @@
     }
 }
 .i4, .i5, .i6, .i7{
-    
     font-size: $font-s;
+    line-height: 1.5;
     .img{
         height: 318px;
         margin-bottom: 14px;

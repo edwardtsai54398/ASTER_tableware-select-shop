@@ -51,36 +51,50 @@
         font-size: $font-xs;
         padding: 10px 0;
         border-bottom: 1px solid #000;
+        margin-bottom: 26px;
+    }
+    .article_list{
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
     }
     .article_item{
-        margin-top: 24px;
         display: flex;
         align-items: center;
         font-size: $font-xs;
         .img{
-            width: 82px;
+            width: 172px;
             height: 100px;
-            margin-right: 12px;
+            margin-right: 33px;
             img{
                 @include img-fit;
             }
         }
     }
 }
-.--article .article_info{
-    width: 280px;
+.article_info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 200px;
     gap: 18px 0;
     h3{
+        grid-column: 1/2 span;
+        line-height: 1.5;
         font-size: $font-xs;
     }
     .readmore{
         justify-self: end;
         img{
+            display: inline-block;
             width: 30px;
             transform: translateX(-8px);
+            transition: 0.3s;
         }
-        &:hover img{
-            transform: translateX(-3px);
+        &:hover {
+            text-decoration: underline;
+            img{
+                transform: translateX(-3px);
+            }
         }
     }
 }
