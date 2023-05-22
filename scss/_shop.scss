@@ -50,8 +50,8 @@
     width: 1126px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    // grid-template-rows: 566px 410px 566px;
     grid-template-rows: 566px 440px 566px;
+    grid-template-rows: auto;
     gap: 2px;
     background-color: #000;
     margin-bottom: 80px;
@@ -60,12 +60,20 @@
     background-color: $bg;
     padding: 20px;
     text-align: center;
+    a{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
     .img{
         width: 100%;
         overflow: hidden;
         img{
             width: 100%;
         }    
+    }
+    .price{
+        margin-top: auto;
     }
     @include hover-style;
 }

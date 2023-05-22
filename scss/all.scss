@@ -22,7 +22,8 @@ $btn-h: 48px;
 @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+TC:wght@500&display=swap');
 body{
     font-family: $font-prim, 
-    $font-scnd, Arial, Helvetica, sans-serif;
+                $font-scnd,
+                Arial, Helvetica, sans-serif;
     background-color: $bg;
 }
 *{

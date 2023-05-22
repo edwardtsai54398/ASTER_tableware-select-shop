@@ -191,9 +191,10 @@ a {
   height: -moz-fit-content;
   height: fit-content;
   position: relative;
+  font-size: 20px;
 }
 .navbar_list .navbar_link > a h6 {
-  transition: 0.5s;
+  transition: transform 0.5s;
 }
 .navbar_list .navbar_link > a h6:last-child {
   position: absolute;
@@ -217,10 +218,6 @@ a {
 }
 .navbar_list .navbar_link > a:hover::after {
   left: 100%;
-}
-.navbar_list .navbar_link a {
-  font-size: 20px;
-  transition: 1s;
 }
 
 .category {
@@ -254,6 +251,8 @@ a {
 .category_item a {
   display: flex;
   align-items: center;
+  font-size: 20px;
+  transition: 1s;
 }
 .category_item .img {
   width: 48px;
@@ -618,7 +617,7 @@ a {
 .journal_box {
   position: absolute;
   top: 50%;
-  right: 10%;
+  right: 100%;
   transform: translateY(-50%);
   height: 414px;
   display: flex;
@@ -881,6 +880,7 @@ a {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 566px 440px 566px;
+  grid-template-rows: auto;
   gap: 2px;
   background-color: #000;
   margin-bottom: 80px;
@@ -891,12 +891,20 @@ a {
   padding: 20px;
   text-align: center;
 }
+.shop_item a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .shop_item .img {
   width: 100%;
   overflow: hidden;
 }
 .shop_item .img img {
   width: 100%;
+}
+.shop_item .price {
+  margin-top: auto;
 }
 .shop_item:hover {
   text-decoration: underline;

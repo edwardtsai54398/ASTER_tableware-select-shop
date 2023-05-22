@@ -80,8 +80,9 @@
             display: block;
             height: fit-content;
             position: relative;
+            font-size: $font-m;
             h6{
-                transition: 0.5s;
+                transition: transform 0.5s;
             }
             h6:last-child{
                 position: absolute;
@@ -109,10 +110,7 @@
                 }
             }
         }
-        a{
-            font-size: $font-m;
-            transition: 1s;
-        }
+        
     }
 }
 .category{
@@ -146,6 +144,8 @@
     a{
         display: flex;
         align-items: center;
+        font-size: $font-m;
+        transition: 1s;
     }
     .img{
         @include circle(48px, transparent);
