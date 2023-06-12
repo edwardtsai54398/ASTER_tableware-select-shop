@@ -11,6 +11,11 @@ $font-scnd: 'Microsoft JhengHei UI', 'TW Cen MT';
 //color
 $primary: #0F405F;
 $bg: #EEE5DA;
+:root{
+    --prim-rgb: 15, 64, 95;
+    --bg-rgb: 238, 229, 218;
+}
+
 $secondary: #B58C67;
 $success: #425E44;
 $btn: #3f3f3f;
@@ -35,11 +40,8 @@ a{
     text-decoration: none;
 }
 
-.d-flex{
-    display: flex;
-}
-.container{
-    width: 1200px;
+.container, .l-container{
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }

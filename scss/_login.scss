@@ -1,6 +1,13 @@
-.--login .header, .--register .header{
+.--login .header-bg, .--register .header-bg{
     background-image: url(../image/header_bg\(3\).png);
+    
 }
+@include pad-H{
+    .--login .header-bg, .--register .header-bg{
+        background-position: 85% center;
+    }
+}
+
 .--login .container, .--register .container{
     width: 360px;
     *{color: #000;}
@@ -60,10 +67,10 @@
     }
 }
 .other_login{
-    width: 370px;
+    width: 70%;
     margin: 0 auto;
     padding-top: 35px;
-    border-top: 1px solid #000;
+    border-top: 3px solid rgba(0,0,0,0.1);
     h6{
         font-size: $font-m;
         text-align: center;

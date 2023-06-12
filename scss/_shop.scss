@@ -1,75 +1,117 @@
-.--shopall .header{
-    background-image: url(../image/shopall/header_shop_bg.png);
+.--shopall .header-bg, .--product .header-bg{
+    background-image: url(../image/shopall/tamara-schipchinskaya-jEPGWiTUn4c-unsplash.jpg);
+    
+    background-position: center;
 }
-.--shopall .container{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    width: 1550px;
+@media screen and (max-width: 767.9px){
+    .--shopall .header-bg, .--product .header-bg{
+        transform: scaleX(-1);
+        background-position: 0px 10%;
+    }
 }
-.breadcrumb{
-    margin-top: 30px;
-    padding-left: 390px;
-    display: flex;
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .--shopall .header-bg, .--product .header-bg{
+        transform: scaleX(-1);
+        background-position: 0px bottom;
+    }
 }
 
-.crumb{
-    margin-right: 55px;
-    font-size: $font-xs;
-    text-transform: capitalize;
-    position: relative;
-    a{
-        @include hover-style($link-hover);
-    }
-    & + li::before{
-        content: "";
-        display: block;
-        width: 15px;
-        height: 15px;
-        background-image: url(../image/angle-right-blue.svg);
-        background-repeat: no-repeat;
-        position: absolute;
-        left: -35px;
+
+.--shopall .container{
+    max-width: 600px;
+    padding-top: 50px;
+}
+
+@media screen and (max-width: 767.9px){
+    .--shopall .container{
+        padding-right: 10px;
+        padding-left: 10px;
     }
 }
+@include pad-H{
+    .--shopall .container{
+        max-width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 90px;
+    }
+}
+@include desktop{
+    .--shopall .container{
+        max-width: 1200px;
+    }
+}
+
+
 
 .--shopall .shop_nav{
-    @include shop-nav(30px, $font-l);
+    @include shop-nav(30px, $font-m);
+    display: none;
+    width: 25%;
     height: fit-content;
+    padding: 0 10px 250px 10px;
     position: sticky;
     top: 40px;
-    padding-bottom: 250px;
+    .shop_nav_item .link_vector{
+        width: 55px;
+    }
+}
+@include pad-H{
+    .--shopall .shop_nav {
+        display: block;
+        .shop_nav_item{
+            font-size: $font-s;
+        }
+    }
+}
+@include desktop{
+    .--shopall .shop_nav {
+        .shop_nav_item{
+            font-size: $font-m;
+        }
+    }
 }
 .shop_content{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 100px;
 }
+.shop_content_title{
+    text-transform: capitalize;
+    align-self: flex-start;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: $font-l;
+}
+
+@include pad-H{
+    .shop_content{
+        width: 75%;
+    }
+}
 .shop_list{
-    width: 1126px;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 566px 440px 566px;
-    grid-template-rows: auto;
-    gap: 2px;
-    background-color: #000;
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 80px;
 }
 .shop_item{
-    background-color: $bg;
-    padding: 20px;
-    text-align: center;
+    padding: 20px 7px;
+    flex-grow: 1;
+    font-size: $font-xs;
+    line-height: 1.5;
     a{
-        height: 100%;
         display: flex;
         flex-direction: column;
+        height: 100%;
     }
     .img{
         width: 100%;
+        aspect-ratio: 19/26;
         overflow: hidden;
         img{
-            width: 100%;
+            @include img-fit;
         }    
     }
     .price{
@@ -78,49 +120,58 @@
     @include hover-style;
 }
 
-.i1, .i8{
-    grid-column: 1/4 span;
-}
-.i2, .i9{
-    grid-column: 5/4 span;
-}
-.i3, .i10{
-    grid-column: 9/4 span;
-}
-.i4{
-    grid-column: 1/3 span;
-}
-.i5{
-    grid-column: 4/3 span;
-}
-.i6{
-    grid-column: 7/3 span;
-}
-.i7{
-    grid-column: 10/3 span;
-}
-.i1, .i2, .i3, .i8, .i9, .i10{
-    font-size: $font-s;
-    line-height: 1.5;
-    .img{
-        height: 454px;
-        margin-bottom: 20px;
+
+@media screen and (max-width: 767.9px){
+    
+    .i1, .i2, .i3, .i4, .i5, .i6, .i7, .i8, .i9, .i10{
+        width: 50%;
+        .img{
+            margin-bottom: 12px;
+        }
+        .name{
+            margin-bottom: 12px;
+        }
     }
-    .name{
-        margin-bottom: 12px;
+    
+}
+@include pad-V{
+    .shop_item{
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+    }
+    .i1, .i2, .i3, .i8, .i9, .i10{
+        width: 33.3333%;
+        
+        .img{
+            margin-bottom: 12px;
+        }
+        .name{
+            margin-bottom: 12px;
+        }
+    }
+    .i4, .i5, .i6, .i7{
+        width: 25%;
+        .img{
+            margin-bottom: 10px;
+        }
+        .name{
+            margin-bottom: 8px;
+        }
+    }
+    .i3, .i7, .i10{
+        border-right: none;
+    }
+    .i8, .i9, .i10{
+        border-bottom: none;
     }
 }
-.i4, .i5, .i6, .i7{
-    font-size: $font-s;
-    line-height: 1.5;
-    .img{
-        height: 318px;
-        margin-bottom: 14px;
-    }
-    .name{
-        margin-bottom: 8px;
+@include pad-H{
+    .shop_item{
+        font-size: $font-s;
+        border-width: 2px;
     }
 }
+
 .pagenation{
     display: flex;
     font-size: $font-s;

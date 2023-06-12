@@ -1,11 +1,8 @@
-.--product .header {
-    background-image: url(../image/shopall/header_shop_bg.png);
-}
-
 .--product .container {
-    margin-top: 90px;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 40px;
 }
 
 .--product {
@@ -14,19 +11,77 @@
         font-family: $font-scnd;
     }
 }
+@keyframes longArrowMove{
+    0%, 50%, 100%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-10px);
+    }
+    75%{
+        transform: translateX(-7px);
+    }
+}
+.prev_page{
+    display: block;
+    width: 20px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    &:hover{
+        animation: longArrowMove 1.5s;
+    }
+}
+@include pad-V {
+    .--product .container {
+        max-width: 900px;
+        padding-top: 120px;
+        padding-right: 20px;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .prev_page{
+        top: 45px;
+        width: 40px;
+    }
+}
+
+@include pad-H {
+    .--product .container {
+        justify-content: center;
+    }
+    .prev_page{
+        left: 0;
+    }
+}
+
+@include desktop {
+    .--product .container {
+        max-width: 1200px;
+    }
+}
 
 .product_pic {
-    margin-right: 180px;
-    width: 382px;
-    position: sticky;
-    top: 90px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 .mainshow {
-    width: 100%;
-    height: 570px;
-    margin-bottom: 18px;
-
+    width: 75%;
+    aspect-ratio: 19/26;
+    margin-bottom: 12px;
+    overflow: hidden;
     img {
         @include img-fit;
     }
@@ -35,27 +90,84 @@
 .showslide {
     width: 100%;
     position: relative;
-    ul{
-        display: flex;
-        gap: 15px;
-        overflow-x: hidden;
+
+    
         .img {
-            width: 84px;
-            height: 126px;
-            flex-shrink: 0;
             cursor: pointer;
+            aspect-ratio: 19/26;
+            overflow: hidden;
+            position: relative;
+            left: 0px;
             img {
                 @include img-fit;
             }
-            &:hover {
-                @include color-mask(rgba(256, 256, 256, 0.4));
-            }
-        } 
-    }
-    .slider-btn:first-child{right: 100%;}
-    .slider-btn:last-child{left: 100%;}
+        }
+
+        .img.active {
+            border: 2px solid $primary;
+        }
 }
-.slider-btn{
+.owl-theme{
+    position: relative;
+}
+.owl-theme .owl-nav{
+    margin-top: 0;
+    [class*="owl-"]:hover{
+        background-color: transparent;
+    }
+}
+.owl-prev, .owl-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(calc(-50% - 5px));
+}
+.owl-prev{
+    right: 101%;
+}
+.owl-next{
+    left: 101%;
+}
+.owl-dots{
+    display: none;
+}
+
+@include pad-V {
+    .product_pic {
+        width: 40%;
+        position: sticky;
+        top: 10px;
+        margin-bottom: 0;
+    }
+
+    .mainshow, .showslide {
+        width: 100%;
+    }
+}
+
+@include pad-H {
+    .product_pic {
+        margin-right: 100px;
+
+    }
+}
+
+@include desktop {
+    .product_pic {
+        margin-right: 180px;
+    }
+
+    .showslide {
+        ul {
+            .img {
+                &:hover {
+                    @include color-mask(rgba(256, 256, 256, 0.4));
+                }
+            }
+        }
+    }
+}
+
+.slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -63,24 +175,24 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    i{
+
+    i {
         font-size: $font-xs;
         width: 12px;
-        color: rgba(0,0,0,0.6);
+        color: rgba(0, 0, 0, 0.6);
     }
-    
+
 }
 
 .product_content {
     display: flex;
     flex-direction: column;
-    width: 480px;
 
     header {
         margin-bottom: 24px;
 
         h2 {
-            font-size: $font-xl;
+            font-size: $font-m;
             margin-bottom: 16px;
         }
 
@@ -91,7 +203,6 @@
         }
 
         .price {
-            font-size: $font-s;
             margin-bottom: 18px;
         }
 
@@ -101,12 +212,37 @@
     }
 }
 
+@include pad-V {
+    .product_content {
+        width: 40%;
+        header{
+            h2{
+                font-size: $font-l;
+            }
+            .price {
+                font-size: $font-s;
+            }
+        }
+    }
+}
+
+@include pad-H {
+    .product_content {
+        width: 480px;
+
+        h2 {
+            font-size: $font-xl;
+        }
+    }
+}
+
 .product_choose {
 
     margin-bottom: 30px;
 }
 
-.color_choose , .quantity{
+.color_choose,
+.quantity {
     legend {
         font-size: $font-xs;
         font-family: $font-prim;
@@ -118,9 +254,10 @@
 .color-btn_group {
     display: flex;
     flex-flow: row wrap;
-    width: 200px;
+    width: 100%;
     gap: 12px;
     margin-bottom: 44px;
+
     label {
         padding: 8px 18px;
         border-radius: 40px;
@@ -146,6 +283,11 @@
     }
 }
 
+@include pad-V{
+    .color-btn_group{
+        width: 200px;
+    }
+}
 .amount-btn_group {
     width: 142px;
     height: 48px;
@@ -155,15 +297,28 @@
     align-items: center;
     margin-bottom: 24px;
     font-size: $font-xs;
-
-    button i{
+    input {
+        display: inline-block;
+        width: 20px;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+    }
+    button i {
         color: #000;
+    }
+    button.unclickable {
+        cursor: auto;
+        i{
+            color: #aaa
+        }
     }
 }
 
 .add_cart {
     button {
         @include func_btn(350px);
+        max-width: 100%;
     }
 }
 
@@ -190,30 +345,13 @@
     overflow: hidden;
     margin-top: 34px;
 
-    input {
-        display: none;
-
-        &:checked {
-            +label i {
-                transform: rotate(180deg);
-            }
-
-            ~p {
-                height: fit-content;
-                //瀏覽器無法實現從0到fit-content的平滑過度效果
-                padding-top: 18px;
-                padding-bottom: 18px;
-            }
-        }
-    }
-
     label {
         display: flex;
         justify-content: space-between;
         padding: 18px 12px;
         border-top: 1px solid #000;
         border-bottom: 1px solid #000;
-        font-size: $font-s;
+        font-size: $font-xs;
         cursor: pointer;
 
         h6 {
@@ -222,7 +360,25 @@
 
         i {
             color: #000;
+            transform: rotate(180deg);
             transition: 0.6s;
+        }
+    }
+
+    input {
+        display: none;
+
+        &:checked {
+            +label i {
+                transform: rotate(0deg);
+            }
+
+            ~p {
+                height: fit-content;
+                //瀏覽器無法實現從0到fit-content的平滑過度效果
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
         }
     }
 
@@ -237,21 +393,39 @@
     }
 }
 
+@include pad-H {
+    .accordion label {
+        font-size: $font-s;
+    }
+}
+
 .recommand.container {
-    margin-top: 250px;
-    margin-bottom: 126px;
+    margin-top: 100px;
+    margin-bottom: 120px;
     display: flex;
     flex-direction: column;
+}
+@media screen and (max-width: 767.9px){
+    .recommand.container{
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+@include desktop {
+    .recommand.container {
+        margin-top: 250px;
+    }
+
 }
 
 .recommand_title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 
     h4 {
-        font-size: $font-m;
+        font-size: $font-s;
         margin-bottom: 30px;
     }
 
@@ -261,28 +435,41 @@
     }
 }
 
+@include pad-H {
+    .recommand_title {
+        margin-bottom: 70px;
+
+        h4 {
+            font-size: $font-m;
+            margin-bottom: 30px;
+        }
+
+    }
+}
+
 .recommand_list {
     width: 100%;
     display: flex;
-    gap: 4px;
+    flex-wrap: wrap;
+    
 }
 
 .recommand_item {
-    width: 25%;
+    width: 50%;
+    padding: 0 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-
+    margin-bottom: 20px;
     a {
         display: block;
         width: 100%;
     }
 
     .img {
-        height: 300px;
         width: 100%;
-        margin-bottom: 30px;
+        aspect-ratio: 2/3;
+        margin-bottom: 15px;
 
         img {
             @include img-fit;
@@ -290,16 +477,41 @@
     }
 
     .name {
-        font-size: $font-s;
+        font-size: $font-xs;
+        padding: 0 8px;
         margin-bottom: 14px;
     }
 
     .price {
-        font-size: $font-s;
+        font-size: $font-xs;
+        padding: 0 8px;
     }
-    &:hover{
-        a{
-            text-decoration: underline;
+
+}
+@include pad-V{
+    .recommand_list{
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+    .recommand_item{
+        width: 25%;
+    }
+}
+@include pad-H {
+    
+    .recommand_item {
+        .name {
+            font-size: $font-s;
+        }
+
+        .price {
+            font-size: $font-s;
+        }
+
+        &:hover {
+            a {
+                text-decoration: underline;
+            }
         }
     }
 }

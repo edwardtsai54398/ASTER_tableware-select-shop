@@ -1,55 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASTER-Select</title>
-    <link href="image/title_icon.ico" rel="shortcut icon"/>
+    <link href="image/title_icon.ico" rel="shortcut icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="scss/all.css">
 </head>
-<body class="--index">
-    <header class="header">
-        <div class="logo">
-            <a href="index.html"><h1>ASTER-Select</h1></a>
-        </div>
-        <div class="social_media">
-            <a href=""><img src="image/facebook.png" alt=""></a>
-            <a href=""><img src="image/instagram.png" alt=""></a>
-            <a href=""><img src="image/twitter.png" alt=""></a>
-        </div>
-        <div class="func">
-            <a href=""><img src="image/search.png" alt=""></a>
-            <a href="login.html"><img src="image/login.png" alt=""></a>
-            <a href="cart.html"><img src="image/cart.png" alt=""></a>
-        </div>
-        <div class="title">
-            <p class="CHT">餐具就像時間的見證者，陪伴我們走過每一個精彩的時刻。<br>
-                每一餐都是一個獨特的體驗，我們所追求的，正是讓每一個用餐時刻更加美好。</p>
-            <p class="ENG">Our pursuit is to make every dining moment<br>
-                even more delightful.</p>
-        </div>
-        <div class="side_navbar">
-            <ul class="navbar_list">
-                <li class="navbar_link">
-                    <a href="about.html">
-                        <h6>about</h6>
-                        <h6>關於我們</h6>
-                    </a>
-                </li>
 
-                <li class="navbar_link shop">
-                    <a href="shop.html">
-                        <h6>shop</h6>
-                        <h6>全部商品</h6>
+<body class="--index">
+    <div id="app">
+        <div class="href_transition">
+            <img src="image/Aster_Logo_animate.svg" alt="">
+            <object id="logo" type="image/svg+xml" data="image/Aster_Logo_animate.svg"></object>
+        </div>
+        <input type="checkbox" name="" id="search_bar">
+        <div class="search-modal">
+            <label for="search_bar" class="close-modal"><i class="fa-solid fa-xmark"></i></label>
+            <input type="text" placeholder="search product">
+        </div>
+        <header class="header">
+            <div class="hide-header" :class="{'header-show' : isScrollUp}">
+                <div class="logo">
+                    <a href="index.html"><img src="image/logo_small.png" alt=""></a>
+                </div>
+                <nav class="hide-header-nav">
+                    <ul class="navbar_list">
+                        <li class="navbar_link">
+                            <a href="about.html">
+                                <h6>about</h6>
+                            </a>
+                        </li>
+                        <li class="navbar_link">
+                            <a href="shop.html">
+                                <h6>shop</h6>
+                            </a>
+                            <nav class="category">
+                                <div class="transparent-hover"></div>
+                                <ul>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/shopall/midjourney_bowl (3).png" alt="">
+                                            </div>
+                                            <h5>bowls</h5>
+                                        </a>
+                                    </li>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/shopall/midjourney_plate (1).png" alt="">
+                                            </div>
+                                            <h5>plates</h5>
+                                        </a>
+                                    </li>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/shopall/midjourney_cup (5).png" alt="">
+                                            </div>
+                                            <h5>cups & glasses</h5>
+                                        </a>
+                                    </li>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/shopall/midjourney_spoon (4).png" alt="">
+                                            </div>
+                                            <h5>spoons & forks</h5>
+                                        </a>
+                                    </li>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/shopall/shop_nav_img (1).png" alt="">
+                                            </div>
+                                            <h5>others</h5>
+                                        </a>
+                                    </li>
+                                    <li class="category_item">
+                                        <a href="shop.html">
+                                            <div class="img">
+                                                <img src="image/index/goop Glassware (Set of 4) (1).jpg" alt="">
+                                            </div>
+                                            <h5>special sets</h5>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li class="navbar_link">
+                            <a href="journal.html">
+                                <h6>journal</h6>
+                            </a>
+                        </li>
+                        <li class="navbar_link">
+                            <a href="">
+                                <h6>contact us</h6>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="func">
+                    <label for="search_bar" class="header_search">
+                        <img src="image/search_icon.svg" alt="">
+                    </label>
+                    <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
+                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                </div>
+            </div>
+            <div class="top-header" :class="{'has-bgcolor' : prevScrollY > 0}">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>ASTER-Select</h1>
                     </a>
-                    <nav class="category">
-                        <div class="transparent-hover"></div>
-                        <ul>
-                            <li class="category_item">
+                </div>
+                <div class="social_media">
+                    <a href=""><img src="image/facebook.svg" alt=""></a>
+                    <a href=""><img src="image/instagram.svg" alt=""></a>
+                    <a href=""><img src="image/twitter.svg" alt=""></a>
+                </div>
+                <div class="func">
+                    <!-- 對應的checkbox和text在最外層 -->
+                    <label for="search_bar" class="header_search">
+                        <img src="image/search_icon.svg" alt="">
+                    </label>
+                    <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
+                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                </div>
+                <div class="hamburger" @click="openToggle = !openToggle, isToggleShopOpen = false"
+                    :class="{'toggle-open' : openToggle}">
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="toggle_navbar" :class="{'toggle-open' : openToggle}">
+                    <ul class="toogle_list">
+                        <li class="toggle_item">
+                            <a href="about.html">
+                                <h6>about</h6>
+                            </a>
+                        </li>
+                        <li class="toggle_item" @click="isToggleShopOpen = !isToggleShopOpen">
+                            <a href="" data-link="prevent">
+                                <h6>shop</h6>
+                                <img src="image/angle-right-blue.svg" alt="">
+                            </a>
+                            <nav class="toggle_shop" :class="{'toggle_shop-show' : isToggleShopOpen}">
+                                <ul>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>all</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>bowls</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>plate</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>cups & glasses</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>spoons & forks</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>others</h5>
+                                        </a>
+                                    </li>
+                                    <li class="toggle_shop_child">
+                                        <a href="shop.html">
+                                            <h5>special sets</h5>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li class="toggle_item">
+                            <a href="journal.html">
+                                <h6>journal</h6>
+                            </a>
+                        </li>
+                        <li class="toggle_item">
+                            <a href="">
+                                <h6>contact us</h6>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="title-sidebar-wrap">
+                <div class="title">
+                    <p class="CHT">餐具就像時間的見證者，陪伴我們走過每一個精彩的時刻。<br>
+                        每一餐都是一個獨特的體驗，我們所追求的，正是讓每一個用餐時刻更加美好。</p>
+                    <p class="ENG">Our pursuit is to make every dining moment<br>
+                        even more delightful.</p>
+                </div>
+                <div class="header-sidebar">
+                    <nav>
+                        <ul class="navbar_list">
+                            <li class="navbar_link">
+                                <a href="about.html">
+                                    <h6>about</h6>
+                                    <h6>關於我們</h6>
+                                </a>
+                            </li>
+                            <li class="navbar_link">
+                                <a href="shop.html">
+                                    <h6>shop</h6>
+                                    <h6>全部商品</h6>
+                                </a>
+                                <nav class="category">
+                                    <div class="transparent-hover"></div>
+                                    <ul>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/shopall/midjourney_bowl (3).png" alt="">
+                                                </div>
+                                                <h5>bowls</h5>
+                                            </a>
+                                        </li>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/shopall/midjourney_plate (1).png" alt="">
+                                                </div>
+                                                <h5>plates</h5>
+                                            </a>
+                                        </li>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/shopall/midjourney_cup (5).png" alt="">
+                                                </div>
+                                                <h5>cups & glasses</h5>
+                                            </a>
+                                        </li>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/shopall/midjourney_spoon (4).png" alt="">
+                                                </div>
+                                                <h5>spoons & forks</h5>
+                                            </a>
+                                        </li>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/shopall/shop_nav_img (1).png" alt="">
+                                                </div>
+                                                <h5>others</h5>
+                                            </a>
+                                        </li>
+                                        <li class="category_item">
+                                            <a href="shop.html">
+                                                <div class="img">
+                                                    <img src="image/index/goop Glassware (Set of 4) (1).jpg" alt="">
+                                                </div>
+                                                <h5>special sets</h5>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </li>
+                            <li class="navbar_link">
+                                <a href="journal.html">
+                                    <h6>journal</h6>
+                                    <h6>日誌</h6>
+                                </a>
+                            </li>
+                            <li class="navbar_link">
+                                <a href="">
+                                    <h6>contact us</h6>
+                                    <h6>聯絡我們</h6>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="header-bg"></div>
+        </header>
+        <!-- ------------------ -->
+        <button class="gotop">
+            <img src="image/gotop_icon.svg" alt="">
+        </button>
+        <section class="arrival">
+            <div class="container">
+                <header class="arrival_head">
+                    <h4 class="color-block">new arrival</h4>
+                    <img src="image/dashline_icon.svg" alt="" class="dashline">
+                    <div class="viewall">
+                        <a href="shop.html">
+                            <span>view all</span>
+                            <img src="image/link_vector_right.svg" alt="">
+                        </a>
+                    </div>
+                </header>
+                <ul class="arrival_list">
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_cup (1).png" alt="">
+                            </div>
+                            <h2 class="name">Yanyou yan Egglet Cup
+                                蛋形杯杯
+                            </h2>
+                            <p class="price">$890</p>
+                        </a>
+                    </li>
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_plate (5).png" alt="">
+                            </div>
+                            <h2 class="name">Milly Dent Dual-tone Plate 雙色沙拉盤盤
+                            </h2>
+                            <p class="price">$890</p>
+                        </a>
+                    </li>
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_plate (2).png" alt="">
+                            </div>
+                            <h2 class="name">Milly Dent Kumo Cup
+                                酒杯
+                            </h2>
+                            <p class="price">$890</p>
+                        </a>
+                    </li>
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_spoon (5).png" alt="">
+                            </div>
+                            <h2 class="name">Milly Dent Kumo Cup
+                                酒杯
+                            </h2>
+                            <p class="price">$890</p>
+                        </a>
+                    </li>
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_cup (4).png" alt="">
+                            </div>
+                            <h2 class="name">Chips Mug馬克杯杯
+                            </h2>
+                            <p class="price">$560</p>
+                        </a>
+                    </li>
+                    <li class="arrival_item">
+                        <a href="product.html">
+                            <div class="img">
+                                <img src="image/shopall/midjourney_bowl (3).png" alt="">
+                            </div>
+                            <h2 class="name">Milly Dent Kumo Cup
+                                酒杯
+                            </h2>
+                            <p class="price">$890</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section class="brand">
+            <div class="container">
+                <div class="dots">
+                    <!-- <span class=""></span>
+                    <span class="active"></span>
+                    <span class=""></span>
+                    <span class=""></span> -->
+                </div>
+                <h4>精選品牌</h4>
+                <div class="img-1">
+                    <div class="brandimg_wrap">
+                        <div class="img"><img src="image/index/brand_img_1.png" alt=""></div>
+                        <div class="img"><img src="image/index/Essentials Sage Dinner Plate (Set of 4).jpg" alt="">
+                        </div>
+                        <div class="img"><img src="image/index/La DoubleJ Cubi Mix Salad Plate (Set of 6)(1).jpg"
+                                alt=""></div>
+                    </div>
+                </div>
+                <div class="img-2">
+                    <div class="brandimg_wrap">
+                        <div class="img"><img src="image/index/brand_img_2.png" alt=""></div>
+                        <div class="img"><img src="image/index/Essentials Sage Dinner Plate (Set of 4) (1).jpg" alt="">
+                        </div>
+                        <div class="img"><img src="image/index/La DoubleJ Transylvania Salad Plate (Set of 6) (1).jpg"
+                                alt=""></div>
+
+                    </div>
+                </div>
+                <div class="img-3">
+                    <div class="brandimg_wrap">
+                        <div class="img"><img src="image/index/brand_img_3.png" alt=""></div>
+                        <div class="img"><img src="image/index/Essentials Black Salad Plate (Set of 4).jpg" alt="">
+                        </div>
+                        <div class="img"><img src="image/index/La DoubleJ Transylvania Salad Plate (Set of 6).jpg"
+                                alt=""></div>
+                    </div>
+                </div>
+                <div class="brand_intro">
+                    <article>
+                        <h3>Yanyou yan</h3>
+                        <p>Yanyou Yan是一個意大利餐具品牌，均由意大利工匠手工製作而成。<br>
+                            以簡約的設計融入現代感，外型不規則的設計讓每一個圓盤都有獨特的美感。</p>
+                    </article>
+                    <article>
+                        <h3>Essentials</h3>
+                        <p>Essentials以色彩簡約和外型不規則的設計為特點，完美地融合了美學與實用性。<br>
+                            它的多功能設計使其適用於各種場合，無論是家庭聚餐還是正式的晚宴，都能為您的食物增添風采。</p>
+                    </article>
+                    <article>
+                        <h3>La DoubleJ</h3>
+                        <p>La DoubleJ是一個意大利餐具品牌，其獨特的風格融合了當代和復古元素，以生動而豐富的圖案和色彩聞名。<br>
+                            它的設計保留了古典的魅力，為任何場合增添了魅力和生氣。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="shop_and_journal">
+            <div class="devide_line"></div>
+            <section class="shop-block">
+                <h5>shop by category</h5>
+                <div class="shopnav_box">
+                    <nav class="shop_nav">
+                        <ul class="shop_nav_list">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/shopall/midjourney_bowl (3).png" alt="">
@@ -57,7 +452,7 @@
                                     <h5>bowls</h5>
                                 </a>
                             </li>
-                            <li class="category_item">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/shopall/midjourney_plate (1).png" alt="">
@@ -65,7 +460,7 @@
                                     <h5>plates</h5>
                                 </a>
                             </li>
-                            <li class="category_item">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/shopall/midjourney_cup (5).png" alt="">
@@ -73,7 +468,7 @@
                                     <h5>cups & glasses</h5>
                                 </a>
                             </li>
-                            <li class="category_item">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/shopall/midjourney_spoon (4).png" alt="">
@@ -81,7 +476,7 @@
                                     <h5>spoons & forks</h5>
                                 </a>
                             </li>
-                            <li class="category_item">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/shopall/shop_nav_img (1).png" alt="">
@@ -89,7 +484,7 @@
                                     <h5>others</h5>
                                 </a>
                             </li>
-                            <li class="category_item">
+                            <li class="shop_nav_item">
                                 <a href="shop.html">
                                     <div class="img">
                                         <img src="image/index/goop Glassware (Set of 4) (1).jpg" alt="">
@@ -99,160 +494,61 @@
                             </li>
                         </ul>
                     </nav>
-                </li>
-
-                <li class="navbar_link">
-                    <a href="journal.html">
-                        <h6>journal</h6>
-                        <h6>日誌</h6>
-                    </a>
-                </li>
-                <li class="navbar_link">
-                    <a href="">
-                        <h6>contact us</h6>
-                        <h6>聯絡我們</h6>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <!-- ------------------ -->
-    <button class="gotop">
-        <img src="image/gotop_icon.svg" alt="" >
-    </button>
-    <section class="arrival">
-        <div class="container">
-            <header class="arrival_head">
-                <h4 class="color-block">new arrival</h4>
-                <img src="image/dashline_icon.svg" alt="" class="dashline">
+                </div>
                 <div class="viewall">
                     <a href="shop.html">
-                        <span>view all</span>
+                        <span>shop all</span>
                         <img src="image/link_vector_right.svg" alt="">
                     </a>
                 </div>
-            </header>
-            <ul class="arrival_list">
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_cup (1).png" alt="">
-                        </div>
-                        <h2 class="name">Yanyou yan Egglet Cup
-                            蛋形杯杯
-                        </h2>
-                        <p class="price">$890</p>
-                    </a>
-                </li>
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_plate (5).png" alt="">
-                        </div>
-                        <h2 class="name">Milly Dent Dual-tone Plate 雙色沙拉盤盤
-                        </h2>
-                        <p class="price">$890</p>
-                    </a>
-                </li>
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_plate (2).png" alt="">
-                        </div>
-                        <h2 class="name">Milly Dent Kumo Cup
-                            酒杯
-                        </h2>
-                        <p class="price">$890</p>
-                    </a>
-                </li>
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_spoon (5).png" alt="">
-                        </div>
-                        <h2 class="name">Milly Dent Kumo Cup
-                            酒杯
-                        </h2>
-                        <p class="price">$890</p>
-                    </a>
-                </li>
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_cup (4).png" alt="">
-                        </div>
-                        <h2 class="name">Chips Mug馬克杯杯
-                        </h2>
-                        <p class="price">$560</p>
-                    </a>
-                </li>
-                <li class="arrival_item">
-                    <a href="product.html">
-                        <div class="img">
-                            <img src="image/shopall/midjourney_bowl (3).png" alt="">
-                        </div>
-                        <h2 class="name">Milly Dent Kumo Cup
-                            酒杯
-                        </h2>
-                        <p class="price">$890</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
-    <section class="brand">
-        <div class="container">
-            <h4>精選品牌</h4>
-            <div class="img-1">
-                <img src="image/index/brand_img_1.png" alt="">
-            </div>
-            <div class="img-2">
-                <img src="image/index/brand_img_2.png" alt="">
-            </div>
-            <div class="img-3">
-                <img src="image/index/brand_img_3.png" alt="">
-            </div>
-            <article class="brand_intro">
-                <h3>Yanyou yan</h3>
-                <p>Yanyou Yan是一個意大利餐具品牌，均由意大利工匠手工製作而成。<br>
-                以簡約的設計融入現代感，外型不規則的設計讓每一個圓盤都有獨特的美感。</p>
-            </article>
-        </div>
-    </section>
-    <section class="shop_and_journal">
-        <div class="devide_line"></div>
-        <section class="journal-block">
-            <h5>journal</h5>
-            <div class="journal_box">
-                <div class="article is-visible" >
-                    <a href="article.html" data-num="1">
+            </section>
+            <section class="journal-block">
+                <h5>journal</h5>
+                <div class="journal_box">
+                    <div class="article is-visible" data-num="1">
+
                         <div class="article_title">
                             <h3>如何挑選適合自己的餐具套裝</h3>
+                            
                         </div>
                         <div class="article_pic">
                             <div class="img">
                                 <img src="image/journal/Photo by micheile henderson on Unsplash 1.png" alt="">
-                                
                             </div>
-                            <h3>如何挑選適合自己的餐具套裝</h3>
+                            <div class="title">
+                                <h3>如何挑選適合自己的餐具套裝</h3>
+                                <h6># 生活風格</h6>
+                            <a href="">
+                                <span>read</span>
+                                <img src="image/link_vector_left.png" alt="">
+                            </a>
+                            <p class="date">May, 23,<br>2023</p>
+                            </div>
                         </div>
-                    </a>
-                </div>
-                <div class="article ">
-                    <a href="article.html" data-num="2">
+                    </div>
+                    <div class="article " data-num="2">
                         <div class="article_title">
                             <h3>餐桌佈置靈感分享：打造美麗又舒適的用餐空間</h3>
+
                         </div>
                         <div class="article_pic">
                             <div class="img">
                                 <img src="image/journal/Photo by Hannah Busing on Unsplash.jpg" alt="">
                             </div>
-                            <h3>餐桌佈置靈感分享：打造美麗又舒適的用餐空間</h3>
+                            <div class="title">
+                                <h3>餐桌佈置靈感分享：打造美麗又舒適的用餐空間</h3>
+                                <h6># 生活風格</h6>
+                                <a href="">
+                                    <span>read</span>
+                                    <img src="image/link_vector_left.png" alt="">
+
+                                </a>
+                                <p class="date">Apr, 11,<br>2023</p>
+                            </div>
+
                         </div>
-                    </a>
-                </div>
-                <div class="article ">
-                    <a href="article.html" data-num="3">
+                    </div>
+                    <div class="article " data-num="3">
                         <div class="article_title">
                             <h3>懷舊餐具的故事：從古董市集看見過去的生活</h3>
                         </div>
@@ -260,96 +556,73 @@
                             <div class="img">
                                 <img src="image/journal/midjourney_vintage.png" alt="">
                             </div>
-                            <h3>懷舊餐具的故事：從古董市集看見過去的生活</h3>
+                            <div class="title">
+                                <h3>懷舊餐具的故事：從古董市集看見過去的生活</h3>
+                                <h6># 生活風格</h6>
+                                <a href="">
+                                    <span>read</span>
+                                    <img src="image/link_vector_left.png" alt="">
+                                </a>
+                                <p class="date">Jun, 8,<br>2023</p>
+                            </div>
+
                         </div>
+                    </div>
+                </div>
+                <div class="viewall">
+                    <a href="shop.html">
+                        <span>go to journal</span>
+                        <img src="image/link_vector_right.svg" alt="">
                     </a>
                 </div>
-            </div>
+            </section>
+
         </section>
-        <section class="shop-block">
-            <h5>shop</h5>
-            <div class="shopnav_box">
-                <nav class="shop_nav">
-                    <ul class="shop_nav_list ">
-                        <li class="shop_nav_item is-visible">
-                            <a href="shop.html">bowls
-                                <img src="image/link_vector_left.png" alt="" class="link_vector">
-                            </a>
-                            <div class="hover_img">
-                                <img src="image/shopall/shop_nav_img (3).png" alt="">
-                            </div>
-                        </li>
-                        <li class="shop_nav_item ">
-                            <a href="shop.html">plates
-                                <img src="image/link_vector_left.png" alt="" class="link_vector">
-                            </a>
-                            <div class="hover_img">
-                                <img src="image/shopall/shop_nav_img (4).png" alt="">
-                            </div>
-                        </li>
-                        <li class="shop_nav_item">
-                            <a href="shop.html">cups & glasses
-                                <img src="image/link_vector_left.png" alt="" class="link_vector">
-                            </a>
-                            <div class="hover_img">
-                                <img src="image/shopall/shop_nav_img (5).png" alt="">
-                            </div>
-                        </li>
-                        <li class="shop_nav_item">
-                            <a href="shop.html">spoons & forks
-                                <img src="image/link_vector_left.png" alt="" class="link_vector">
-                            </a>
-                            <div class="hover_img">
-                                <img src="image/shopall/shop_nav_img(6).png" alt="">
-                            </div>
-                        </li>
-                        <li class="shop_nav_item ">
-                            <a href="shop.html">others
-                                <img src="image/link_vector_left.png" alt="" class="link_vector">
-                            </a>
-                            <div class="hover_img">
-                                <img src="image/shopall/shop_nav_img (1).png" alt="">
-                            </div>
-                        </li>
+        <!-- ------------------- -->
+        <footer class="footer">
+            <div class="l-container">
+                <div class="link_group">
+                    <ul class="navbar_list">
+                        <li class="navbar_link"><a href="about.html">about</a></li>
+                        <li class="navbar_link"><a href="shop.html">shop</a></li>
+                        <li class="navbar_link"><a href="journal.html">journal</a></li>
+                        <li class="navbar_link"><a href="">contact us</a></li>
                     </ul>
-                </nav>
+                    <div class="social_media">
+                        <a href=""><img src="image/facebook_footer.svg" alt=""></a>
+                        <a href=""><img src="image/instagram_footer.svg" alt=""></a>
+                        <a href=""><img src="image/twitter_footer.svg" alt=""></a>
+                    </div>
+                </div>
+                <div class="vertical_line">
+                    <div></div>
+                </div>
+                <div class="l-email">
+                    <p>Sign up for all the latest news<br>and offers</p>
+                    <div class="input_group">
+                        <input type="email" placeholder="E-mail">
+                        <button class="l-send_email"><img src="image/email_chevron-right.svg" alt=""></button>
+                    </div>
+                </div>
+                <div class="logo">
+                    <img src="image/footerLOGO.png" alt="">
+                </div>
+                <div class="copyright">
+                    <p>本網站為緯育TibaMe前端工程師班第83期學員專題作品，本平台僅供學習、展示之用。</p>
+                </div>
             </div>
-        </section>
-    </section>
-     <!-- ------------------- -->
-     <footer class="footer">
-        <div class="link_group">
-            <ul class="navbar_list">
-                <li class="navbar_link"><a href="about.html">about</a></li>
-                <li class="navbar_link"><a href="shop.html">shop</a></li>
-                <li class="navbar_link"><a href="journal.html">journal</a></li>
-                <li class="navbar_link"><a href="">contact us</a></li>
-            </ul>
-            <div class="social_media">
-                <a href=""><img src="image/facebook_footer.png" alt=""></a>
-                <a href=""><img src="image/instagram_footer.png" alt=""></a>
-                <a href=""><img src="image/twitter_footer.png" alt=""></a>
-            </div>
-        </div>
-        <div class="vertical_line">
-            <div></div>
-        </div>
-        <div class="email">
-            <p>Sign up for all the latest news<br>and offers</p>
-            <div class="input_group">
-                <input type="email" placeholder="E-mail">
-                <button class="send_email"><img src="image/email_chevron-right.svg" alt=""></button>
-            </div>
-        </div>
+        </footer>
+    </div>
 
-        <div class="logo">
-            <img src="image/footerLOGO.png" alt="">
-        </div>
-        <div class="copyright">
-            <p>本網站為緯育TibaMe前端工程師班第83期學員專題作品，本平台僅供學習、展示之用。</p>
-        </div>
-    </footer>
-
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/layout.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>

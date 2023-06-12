@@ -1,248 +1,767 @@
-.--about{
-    overflow-x: hidden;
-}
-.--about .header{
+.--about .header-bg {
     background-image: url(../image/header_bg\ \(5\).png);
 }
-.--about .container{
-    width: 1550px;
-    margin-top: 90px;
-    display: grid;
-    grid-template-columns: 1fr 250px 1fr;
-    grid-template-rows: repeat(3, 960px);
+
+.--about .container {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    p, h2, h3, h4, h5, h6{
+    overflow-x: hidden;
+
+    p,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         font-family: $font-scnd;
         font-weight: 600;
     }
 }
-.flower_scroll{
-    grid-area: 1/2/2/3;
+@include pad-V{
+    .--about .container{
+        padding-top: 150px;
+    }
 }
-.intro_pic-1{
-    grid-area: 1/1/2/2;
-}
-.intro-1{
-    grid-area: 1/3/2/-1;
-}
-.intro-2{
-    grid-area: 2/1/3/2;
-}
-.intro_pic-2{
-    grid-area: 2/3/3/-1;
-}
-.store_pic{
-    grid-area: -2/1/-1/2;
-}
-.store_info{
-    grid-area: -2/3/-1/-1;
-}
-@keyframes rotate{
-    0%{transform: translate(var(--center), var(--center)) rotate(0deg);}
-    100%{transform: translate(var(--center), var(--center)) rotate(60deg);}
+@include pad-H {
+    .--about #app{overflow-x: hidden;}
+    .--about .container {
+        display: grid;
+        grid-template-columns: 41.6666% 16.6666% 41.6666%;
+        grid-template-rows: repeat(3, 960px);
+        max-width: 900px;
+        grid-template-rows: repeat(3, 800px);
+        overflow-x: visible;
+    }
 }
 
-:root {
-    --center: calc(-50% + 8px);
+@include desktop {
+    .--about .container {
+        max-width: 1200px;
+        grid-template-rows: repeat(3, 960px);
+    }
 }
-@keyframes rotate-scroll{
-    0%{transform: rotate(0deg);}
-    100%{transform: rotate(60deg);}
+
+@media screen and (min-width: 1500px) {
+    .--about .container {
+        max-width: 1500px;
+        grid-template-rows: repeat(3, 1100px);
+    }
 }
-.flower_scroll{
-    justify-self: center;
-    position: sticky;
-    top: 45%;
-    left: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 55px;
-    margin: 450px 0 430px;
-    .flower{
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(var(--center), var(--center));
+
+.flower_scroll {
+    grid-area: 1/2/2/3;
+}
+
+.intro_pic-1 {
+    grid-area: 1/1/2/2;
+}
+
+.intro-1 {
+    grid-area: 1/3/2/-1;
+}
+
+.intro-2 {
+    grid-area: 2/1/3/2;
+}
+
+.intro_pic-2 {
+    grid-area: 2/3/3/-1;
+}
+
+.store_pic {
+    grid-area: -2/1/-1/2;
+}
+
+.store_info {
+    grid-area: -2/3/-1/-1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate-fast {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(720deg);
+    }
+}
+
+.flower_scroll {
+    display: none;
+}
+
+@include pad-H {
+    .flower_scroll {
         display: block;
-        width: 77px;
-        animation: rotate 2s linear infinite;
-    }
-    .circle{
-        @include circle(16px, rgba(0,0,0, 0.15));
-    }
-    .invisible.circle{
-        @include circle(0px, rgba(0,0,0, 0));
-    }
-    img:last-child{
-        position: absolute;
-        top: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: block;
-        height: calc(100% - 16px);
-        opacity: 0.2;
+        height: 70px;
+        justify-self: center;
+        position: relative;
+        width: 7.5%;
+        transition: 0.3s ease-out;
+
+        .flower {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            width: 480%;
+            animation: rotate 12s linear infinite;
+            transition: 1s;
+        }
+        .flower.animate-fast{
+            animation: rotate-fast 2s cubic-bezier(.21,.72,.49,.94);
+        }
+
+        .circle {
+            @include circle(100%, rgba(var(--bg-rgb)),3px solid #fff);
+            transform: translateY(-50%);
+            position: absolute;
+            cursor: pointer;
+            transition: 1.5s;
+            left: 0;
+        }
+        .progress_line{
+            height: 100%;
+            width: 30%;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .circle[data-scroll="1"] {
+            top: 0;
+        }
+
+        .circle[data-scroll="2"] {
+            top: 50%;
+        }
+
+        .circle[data-scroll="3"] {
+            top: 100%;
+        }
+
+        .invisible.circle {
+            width: 0;
+            border: 0px solid #fff;
+            left: 50%;
+        }
+
+        
     }
 }
-.intro_pic-1, .intro_pic-2, .store_pic{
-    justify-self: end;
+
+@include desktop {
+    .flower_scroll {
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .flower_scroll {
+        height: 130px;
+    }
+}
+
+.intro_pic-1,
+.intro_pic-2,
+.store_pic {
     position: relative;
-    .img{
-        width: 500px;
-        height: 750px;
-        img{
+    margin-bottom: 60px;
+
+    .img {
+        width: 200px;
+        aspect-ratio: 2/3;
+
+        img {
             @include img-fit;
         }
     }
 }
 
-.pill{
-    @include pill-v(500px, 960px);
+@include pad-V {
+
+    .intro_pic-1,
+    .intro_pic-2,
+    .store_pic {
+        margin-bottom: 60px;
+
+        .img {
+            width: 350px;
+        }
+    }
+}
+
+.pill {
+    @include pill-v(200px, 380px);
     background-color: $success;
     position: absolute;
-    left: -150px;
-    top: -105px;
+    left: -30%;
+    top: -15%;
     z-index: -1;
 }
-.intro_pic-1 .plate_vector{
-    width: 900px;
-    position: absolute;
-    top: -65px;
-    left: -10%;
-    z-index: -2;
-}
-.intro-1, .intro-2{
-    position: relative;
-    p:nth-child(1){
-        font-size: $font-m;
-        line-height: 1.5;
-        margin-bottom: 44px;
-    }
-    p:nth-child(2){
-        font-size: $font-s;
-        line-height: 1.5;
-    }
-}
-.intro-1{
-    width: 640px;
-    justify-self: end;
-    .plate_vector{
-        transform: rotate(180deg);
+
+.intro_pic-1,
+.intro-1 {
+    .plate_vector {
         position: absolute;
-        bottom: -100%;
+        z-index: -2;
+    }
+}
+
+.intro_pic-1 .plate_vector {
+    width: 160%;
+    top: -10%;
+    left: -10%;
+
+}
+
+.intro-1 {
+    justify-self: end;
+
+    .plate_vector {
+        display: none;
+        width: 130%;
+        transform: rotate(180deg);
+        bottom: -40%;
         left: 25%;
     }
 }
-.intro_pic-2{
-    order: 3;
-    justify-self: start;
-    .circle{
+
+@include pad-V {
+    .pill {
+        @include pill-v(350px, 650px);
+    }
+
+    .intro_pic-1 .plate_vector {
+        left: 0%;
+    }
+
+}
+
+@include pad-H {
+
+    .intro_pic-1,
+    .intro_pic-2,
+    .store_pic {
+        justify-self: end;
+        width: 90%;
+
+        .img {
+            width: 100%;
+        }
+    }
+
+    .pill {
+        @include pill-v(350px, 650px);
+        left: -20%;
+    }
+
+    .intro_pic-1 .plate_vector {
+        left: -10%;
+    }
+
+    .intro-1 {
+        justify-self: end;
+
+        .plate_vector {
+            display: block;
+            width: 130%;
+            transform: rotate(180deg);
+            bottom: -70%;
+            left: 25%;
+        }
+    }
+}
+
+@include desktop {
+    .intro_pic-1,
+    .intro_pic-2,
+    .store_pic {
+        justify-self: end;
+        width: 80%;
+
+        .img {
+            width: 100%;
+        }
+    }
+    .pill {
+        @include pill-v(400px, 750px);
+    }
+
+    .intro_pic-1 .plate_vector {
+        left: -10%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .pill {
+        @include pill-v(500px, 960px);
+    }
+
+    .intro_pic-1 .plate_vector {
+        left: -10%;
+    }
+}
+
+.intro-1,
+.intro-2 {
+    position: relative;
+    width: 80%;
+    margin-bottom: 100px;
+
+    p:nth-child(1) {
+        font-size: $font-s;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    p:nth-child(2) {
+        font-size: $font-xs;
+        line-height: 2;
+    }
+}
+
+@include pad-V {
+
+    .intro-1,
+    .intro-2 {
+        width: 550px;
+    }
+}
+
+@include pad-H {
+
+    .intro-1,
+    .intro-2 {
+        width: 100%;
+        p:nth-child(1) {
+            font-size: $font-m;
+            margin-bottom: 20px;
+        }
+
+        p:nth-child(2) {
+            font-size: $font-xs;
+        }
+    }
+}
+
+@include desktop {
+
+    .intro-1,
+    .intro-2 {
+        p:nth-child(1) {
+            font-size: $font-m;
+            margin-bottom: 44px;
+        }
+
+        p:nth-child(2) {
+            font-size: $font-s;
+        }
+    }
+}
+
+.intro-2,
+.intro_pic-2 {
+    .fork {
+        display: none;
+    }
+}
+
+.intro_pic-2 {
+    .circle {
         position: absolute;
-        @include circle(622px, $secondary);
+        @include circle(100%, $secondary);
         top: -17%;
         right: -55%;
         z-index: -1;
     }
-    .fork{
-        position: absolute;
-        bottom: 40px;
-        right: 85%;
-        z-index: -1;
-        transform: scale(-1.15) rotate(15deg);
+}
+
+
+
+@include pad-H {
+    .intro_pic-2 {
+        order: 3;
+        justify-self: start;
+
+        .fork {
+            display: block;
+            position: absolute;
+            z-index: -1;
+            transform: scale(-0.6) rotate(15deg);
+            right: 50%;
+            bottom: 0;
+        }
     }
 }
-.intro-2{
-    width: 680px;
-    order: 2;
-    position: relative;
-    .fork{
-        position: absolute;
-        top: -75%;
-        right: 65%;
-        z-index: -1;
-        transform: scale(1.15);
+
+@include desktop {
+    .intro_pic-2 {
+
+        .fork {
+            transform: scale(-0.9) rotate(15deg);
+            right: 65%;
+        }
     }
-    .flower-1{
+}
+
+@media screen and (min-width: 1500px) {
+    .intro_pic-2 {
+        .fork {
+            right: 75%;
+            bottom: 40px;
+            transform: scale(-1.15) rotate(15deg);
+        }
+    }
+}
+
+.intro-2 {
+
+
+    .flower-1 {
         position: absolute;
         bottom: -100px;
-        left: -40px;
+        left: 5px;
         opacity: 0.6;
-        animation: rotate 2.5s linear infinite;
-    }
-    .flower-2{
-        position: absolute;
-        top: -100px;
-        right: 40px;
         zoom: 60%;
+        animation: rotate 15s linear infinite;
+    }
+
+    .flower-2 {
+        position: absolute;
+        zoom: 45%;
         opacity: 0.4;
-        animation: rotate 2s reverse linear infinite;        
+        animation: rotate 12s reverse linear infinite;
+        top: -60px;
+        right: 20px;
     }
 }
+
+@include pad-V {
+    .intro-2 {
+        .flower-1 {
+            bottom: -100px;
+            left: 0px;
+            zoom: 100%;
+        }
+
+        .flower-2 {
+            zoom: 60%;
+            top: -60px;
+            right: 20px;
+        }
+    }
+}
+
+@include pad-H {
+    .intro-2 {
+        order: 2;
+
+        .fork {
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: -60%;
+            right: 50%;
+            transform: scale(0.6);
+        }
+
+        .flower-1 {
+            bottom: -100px;
+            left: 0px;
+        }
+
+        .flower-2 {
+            top: -100px;
+            right: 40px;
+
+        }
+    }
+}
+
+@include desktop {
+    .intro-2 {
+        .fork {
+            top: -60%;
+            right: 50%;
+            transform: scale(0.9);
+        }
+
+        .flower-1 {
+            bottom: -100px;
+        }
+
+        .flower-2 {
+            top: -100px;
+            right: 40px;
+            zoom: 60%;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .intro-2 {
+        .fork {
+            top: -75%;
+            right: 80%;
+            transform: scale(1.15);
+        }
+
+        .flower-1 {
+            left: -40px;
+        }
+
+        .flower-2 {
+            zoom: 60%;
+        }
+    }
+}
+
 .store_pic {
-    order: 4;
-    .arched{
-        @include arched(500px, 840px);
+    .arched {
+        @include arched(200px, 350px);
         background-color: $primary;
         position: absolute;
-        bottom: 50px;
-        left: -100px;
+        bottom: 6.6666%;
+        left: -15%;
         z-index: -1;
     }
 }
-.store_info{
-    order: 4;
-    h4{
-        font-size: $font-m;
-        margin-bottom: 70px;
-    }
-    .intro{
-        border: 1px solid $primary;
-        width: 500px;
-        padding: 44px 28px;
-        margin-bottom: 28px;
-        h2{
-            font-size: $font-m;
-            margin-bottom: 30px;
+
+@include pad-V {
+    .store_pic {
+        .arched {
+            @include arched(350px, 580px);
         }
-        p{
+    }
+}
+
+@include pad-H {
+    .store_pic {
+        order: 4;
+        .arched{
+            left: -20%;
+        }
+    }
+}
+
+@include desktop {
+    .store_pic {
+        .arched {
+            @include arched(400px, 650px);
+            bottom: 50px;
+            left: -100px;
+        }
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .store_pic {
+        .arched {
+            @include arched(500px, 840px);
+            bottom: 50px;
+            left: -100px;
+        }
+    }
+}
+
+.store_info {
+    order: 4;
+    width: 80%;
+
+    h4 {
+        font-size: $font-s;
+        margin-bottom: 40px;
+    }
+
+    .intro {
+        border: 1px solid $primary;
+        width: 100%;
+        padding: 25px 25px;
+        margin-bottom: 28px;
+
+        h2 {
+            font-size: $font-s;
+            margin-bottom: 20px;
+        }
+
+        p {
             font-size: $font-xs;
             line-height: 2;
         }
     }
-    .info{
+
+    .info {
         padding-left: 16px;
-        i{
+
+        i {
             font-size: $font-xs;
             color: transparent;
             -webkit-text-stroke: 1px $primary;
-            margin-right: 5px;
+            margin-right: 8px;
         }
-        p{
+
+        p {
             font-size: $font-xs;
             line-height: 2;
         }
-        p:nth-child(3){
-            padding-left: 90px;
+
+        p:nth-child(3) {
+            padding-left: 88px;
             text-indent: calc(-6em - 2px);
-            i{
+
+            i {
                 transform: translateX(calc(5em - 2px));
             }
         }
     }
 }
-@keyframes carousel{
-    0%{transform: translateX(0%);}
-    100%{transform: translateX(-50%);}
+
+@include pad-V {
+    .store_info {
+        width: 500px;
+
+        h4 {
+            font-size: $font-m;
+        }
+
+        .intro {
+            padding: 30px 25px;
+
+            h2 {
+                font-size: $font-m;
+            }
+        }
+    }
 }
-.carousel{
+
+@include pad-H {
+    .store_info {
+        width: 100%;
+    }
+}
+
+@include desktop {
+    .store_info {
+        width: 500px;
+    }
+}
+
+@keyframes carousel {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.follow_instagram{
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .img{
+        box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.1);
+        position: absolute;
+        aspect-ratio: 5/7;
+        transition: 2.2s cubic-bezier(.03,.97,.25,.85);
+        &:nth-of-type(1){top: 20%;left: 20%;box-shadow: 5px 5px 15px rgba(0,0,0,0.1);}
+        &:nth-of-type(2){top: 30%;left: 10%;box-shadow: 5px 5px 15px rgba(0,0,0,0.1);}
+        &:nth-of-type(3){top: 80%;left: 20%;box-shadow: 5px -5px 15px rgba(0,0,0,0.1);}
+        &:nth-of-type(4){top: 30%;left: 70%;box-shadow: -5px 5px 15px rgba(0,0,0,0.1);}
+        &:nth-of-type(5){top: 80%;left: 60%;box-shadow: -5px -5px 15px rgba(0,0,0,0.1);}
+        &:nth-of-type(6){top: 70%;left: 80%;box-shadow: -5px -5px 15px rgba(0,0,0,0.1);}
+        img{
+            @include img-fit;
+        }
+    }
+
+    .img.invisible{
+        width: 0px;
+        top: 50%;
+        left: 50%;
+    }
+    .logo{
+        width: 150px;
+        margin-bottom: 40px;
+        img{
+            @include img-fit;
+            object-fit: contain;
+        }
+    }
+    
+    a{
+        color: $secondary;
+        text-decoration: underline;
+    }
+}
+.follow_us{
+    width: 70%;
+    font-size: $font-m;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: $secondary;
+    margin-bottom: 40px;
+}
+@include pad-V{
+    .follow_us{
+        width: 300px;
+    }
+}
+@include pad-H{
+    
+    .follow_us{
+        font-size: $font-l;
+        width: 400px;
+        margin-bottom: 60px;
+    }
+}
+@include desktop{
+    .follow_instagram{
+        height: 1000px;
+    }
+}
+@media screen and (min-width: 1500px){
+    .follow_instagram{
+        .img{
+            &:nth-of-type(1){top: 20%;left: 30%;}
+            &:nth-of-type(2){top: 30%;left: 20%;}
+            &:nth-of-type(3){top: 90%;left: 25%;}
+            &:nth-of-type(4){top: 20%;left: 70%;}
+            &:nth-of-type(5){top: 75%;left: 60%;}
+            &:nth-of-type(6){top: 60%;left: 80%;}
+        }
+    }
+}
+.carousel {
     margin: 130px 0 250px;
     width: 4200px;
     display: flex;
     animation: carousel 30s linear infinite;
-    .img{
+
+    .img {
         width: 400px;
         height: 310px;
         margin-right: 20px;
-        img{
+
+        img {
             @include img-fit;
         }
     }
