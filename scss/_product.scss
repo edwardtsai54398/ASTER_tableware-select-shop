@@ -69,6 +69,147 @@
     }
 }
 
+.cart_modal{
+    position: fixed;
+    top: 110%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 2;
+    width: 90%;
+    background-color: $bg;
+    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: display 0.1s 0.4s, transform 0.4s;
+
+    button{
+        @include func_btn(100%);
+    }
+}
+.cart_modal.visible{
+    
+    top: 100%;
+    transform: translate(0,-100%);
+    transition: transform 0.3s 0.1s, top 0.1s;
+}
+.cart_modal_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    span{
+        font-size: $font-xs;
+    }
+    i{  
+        font-size: $font-m;
+    }
+}
+
+.cart_preitem{
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 12px 8px;
+    margin-bottom: 30px;
+    display: flex;
+    .img{
+        width: 30%;
+        aspect-ratio: 2/3;
+        margin-right: 20px;
+        color: #000;
+        img{
+            @include img-fit;
+        }
+    }
+    .text{
+        padding-top: 10px;
+        line-height: 1.5;
+        h6{
+            font-size: $font-s;
+            margin-bottom: 8px;
+        }
+        span{
+            font-size: $font-xs;
+
+        }
+    }
+    
+}
+.view_cart{
+    display: block;
+    width: 100%;
+    height: $btn-h;
+    line-height: $btn-h;
+    color: #000;
+    font-family: $font-scnd;
+    text-align: center;
+    font-size: $font-s;
+    border: 1px solid $secondary;
+    cursor: pointer;
+    margin-bottom: 10px;
+    *{
+        color: #000;
+    }
+    &:hover{
+        background-color: $secondary;
+        color: $bg;
+        *{
+            color: $bg;
+        }
+    }
+}
+
+@include pad-V{
+    .cart_modal{
+        left: 5%;
+        margin: 0;
+        width: 50%;
+    }
+}
+@include pad-H{
+    .cart_modal{
+        top: 60px;
+        left: 100%;
+        width: 380px;
+    }
+    .cart_modal.visible{
+        transform: translate(-100%,0);
+        top: 60px;
+        left: 100%;
+        transition: transform 0.3s 0.1s, left 0.1s;
+
+    }
+    .cart_modal_head{
+        span{
+            font-size: $font-s;
+        }
+        i{  
+            font-size: 24px;
+        }
+    }
+    .cart_preitem{
+        padding: 15px 10px;
+        margin-bottom: 40px;
+        .img{
+            width: 40%;
+        }
+        .text{
+            span{
+                font-size: $font-s;
+            }
+        }
+        
+    }
+}
+@include desktop{
+    .cart_preitem{
+        padding:  15px;
+        .img{
+            width: 25%;
+        }
+    }
+}
 .product_pic {
     height: fit-content;
     display: flex;

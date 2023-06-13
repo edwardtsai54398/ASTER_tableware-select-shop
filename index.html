@@ -111,7 +111,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
             </div>
             <div class="top-header" :class="{'has-bgcolor' : prevScrollY > 0}">
@@ -131,7 +131,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
                 <div class="hamburger" @click="openToggle = !openToggle, isToggleShopOpen = false"
                     :class="{'toggle-open' : openToggle}">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="widdiv=device-widdiv, initial-scale=1.0">
+    <meta name="viewport"  content="widdiv=device-widdiv, initial-scale=1.0">
     <title>ASTER-Select</title>
     <link href="image/title_icon.ico" rel="shortcut icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -108,7 +108,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
             </div>
             <div class="top-header" :class="{'has-bgcolor' : prevScrollY > 0}">
@@ -128,7 +128,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
                 <div class="hamburger" @click="openToggle = !openToggle, isToggleShopOpen = false" :class="{'toggle-open' : openToggle}">
                     <span></span>
@@ -288,7 +288,11 @@
             <div class="header-bg"></div>
         </header>
         <!-- ------------------ -->
-        <div class="container">
+        <div class="container cart_empty">
+            <p>Your cart is empty.</p>
+            <a href="shop.html">Continue shopping</a>
+        </div>
+        <div class="container has_Item">
             <div class="cart_head">
                 <div>product</div>
                 <div>quantity</div>
@@ -312,15 +316,14 @@
                                 <i class="fa-solid fa-plus"></i>
                             </button>
                         </div>
-                        <!-- <quantity-component></quantity-component> -->
                         <button class="item-delete"><img src="image/icon_trashcan.svg" alt=""></button>
                     </div>
                     <div class="cart_price">$890</div>
                 </li>
             </ul>
             <div class="cart_total-checkout">
-                <p class="discount">折扣：<span>-$60</span></p>
-                <p class="price-total">總計：<span>$830</span></p>
+                <p class="discount">折扣：-$<span>60</span></p>
+                <p class="price-total">總計：$<span></span></p>
                 <p class="checkout_remark">結帳時計算稅金和運費</p>
                 <button class="checkout">checkout</button>
             </div>

@@ -110,7 +110,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
             </div>
             <div class="top-header" :class="{'has-bgcolor' : prevScrollY > 0}">
@@ -130,7 +130,7 @@
                         <img src="image/search_icon.svg" alt="">
                     </label>
                     <a href="login.html"><img src="image/login_icon.svg" alt=""></a>
-                    <a href="cart.html"><img src="image/cart_icon.svg" alt=""></a>
+                    <a href="cart.html" class="cart_icon"><span></span><img src="image/cart_icon.svg" alt=""></a>
                 </div>
                 <div class="hamburger" @click="openToggle = !openToggle, isToggleShopOpen = false" :class="{'toggle-open' : openToggle}">
                     <span></span>
@@ -292,6 +292,24 @@
         <!-- ------------------ -->
         <div class="container">
             <a href="shop.html" class="prev_page"><img src="image/long_arrow_left.svg" alt=""></a>
+            <div class="cart_modal">
+                <div class="cart_modal_head">
+                    <span>商品已加入購物車</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                
+                <div class="cart_preitem">
+                    <!-- 
+                        <div class="img"><img src="image/shopall/midjourney_plate (3).png" alt=""></div>
+                        <div class="text">
+                            <h6>Tuxton Green Bay 橢圓盤</h6>
+                            <span>Color:<span></span></span>
+                        </div>
+                     -->
+                </div>
+                <a href="cart.html" class="view_cart">View my cart <span></span></a>
+                <button>Checkout</button>
+            </div>
             <div class="product_pic">
                 <div class="mainshow">
                     <img src="image/product/midjourney (9).png" alt="">
@@ -318,7 +336,7 @@
                 <header>
                     <h2>Chips Mug馬克杯杯</h2>
                     <h3>CHIPS</h3>
-                    <p class="price">$560</p>
+                    <p class="price">$<span>560</span></p>
                     <p>結帳時計算運費</p>
                 </header>
                 <div class="product_choose">

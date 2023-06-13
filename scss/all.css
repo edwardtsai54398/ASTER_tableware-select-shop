@@ -152,7 +152,7 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  z-index: -1;
+  z-index: -2;
 }
 
 .navbar_list {
@@ -272,6 +272,26 @@ a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.cart_icon {
+  position: relative;
+}
+.cart_icon span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  transform: translate(60%, -50%);
+  width: 20px;
+  aspect-ratio: 1/1;
+  background-color: #B58C67;
+  border-radius: 50%;
+  color: #EEE5DA;
+  font-size: 12px;
+  font-family: "Microsoft JhengHei UI", "TW Cen MT";
+  text-align: center;
+  line-height: 20px;
 }
 
 @media screen and (max-width: 1023.9px) {
@@ -2837,6 +2857,155 @@ a {
     max-width: 1200px;
   }
 }
+.cart_modal {
+  position: fixed;
+  top: 110%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  width: 90%;
+  background-color: #EEE5DA;
+  box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: display 0.1s 0.4s, transform 0.4s;
+}
+.cart_modal button {
+  width: 100%;
+  background-color: #3f3f3f;
+  height: 48px;
+  line-height: 48px;
+  color: #fff !important;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.cart_modal button:hover {
+  background-color: #000;
+}
+
+.cart_modal.visible {
+  top: 100%;
+  transform: translate(0, -100%);
+  transition: transform 0.3s 0.1s, top 0.1s;
+}
+
+.cart_modal_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cart_modal_head span {
+  font-size: 12px;
+}
+.cart_modal_head i {
+  font-size: 20px;
+}
+
+.cart_preitem {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 12px 8px;
+  margin-bottom: 30px;
+  display: flex;
+}
+.cart_preitem .img {
+  width: 30%;
+  aspect-ratio: 2/3;
+  margin-right: 20px;
+  color: #000;
+}
+.cart_preitem .img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cart_preitem .text {
+  padding-top: 10px;
+  line-height: 1.5;
+}
+.cart_preitem .text h6 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.cart_preitem .text span {
+  font-size: 12px;
+}
+
+.view_cart {
+  display: block;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  color: #000;
+  font-family: "Microsoft JhengHei UI", "TW Cen MT";
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #B58C67;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.view_cart * {
+  color: #000;
+}
+.view_cart:hover {
+  background-color: #B58C67;
+  color: #EEE5DA;
+}
+.view_cart:hover * {
+  color: #EEE5DA;
+}
+
+@media screen and (min-width: 768px) {
+  .cart_modal {
+    left: 5%;
+    margin: 0;
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .cart_modal {
+    top: 60px;
+    left: 100%;
+    width: 380px;
+  }
+  .cart_modal.visible {
+    transform: translate(-100%, 0);
+    top: 60px;
+    left: 100%;
+    transition: transform 0.3s 0.1s, left 0.1s;
+  }
+  .cart_modal_head span {
+    font-size: 16px;
+  }
+  .cart_modal_head i {
+    font-size: 24px;
+  }
+  .cart_preitem {
+    padding: 15px 10px;
+    margin-bottom: 40px;
+  }
+  .cart_preitem .img {
+    width: 40%;
+  }
+  .cart_preitem .text span {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cart_preitem {
+    padding: 15px;
+  }
+  .cart_preitem .img {
+    width: 25%;
+  }
+}
 .product_pic {
   height: -moz-fit-content;
   height: fit-content;
@@ -3846,6 +4015,39 @@ a {
   color: #000;
 }
 
+.container.cart_empty {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container.cart_empty p {
+  font-size: 30px;
+  margin-bottom: 40px;
+  margin-top: auto;
+}
+.container.cart_empty a {
+  width: 200px;
+  background-color: #3f3f3f;
+  height: 48px;
+  line-height: 48px;
+  color: #fff !important;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: auto;
+}
+.container.cart_empty a:hover {
+  background-color: #000;
+}
+
+@media screen and (min-width: 1024px) {
+  .container.cart_empty {
+    height: 600px;
+  }
+}
 table {
   width: 100%;
 }

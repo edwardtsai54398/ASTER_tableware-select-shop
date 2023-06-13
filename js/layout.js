@@ -31,6 +31,19 @@ if(Path == '/ASTER_tableware-select-shop/'
     });
 });
 
+//判斷 cartData長度並渲染 購物車icon數量
+cartIconAmount()
+function cartIconAmount(){
+    console.log('執行');
+    let cartData = JSON.parse(localStorage.getItem('cartData')) || []
+    let Len = cartData.length
+    if(Len == 0){
+        $('.cart_icon span').hide()
+    }else{
+        $('.cart_icon span').text(Len).show()
+    }
+}
+
 const app = Vue.createApp({
     data() {
         return {
