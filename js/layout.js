@@ -1,9 +1,8 @@
 let fadeSetOutTime = 0
-let Location = window.location.href
-
+let Path = window.location.path
 
 $(document).ready(function () {
-if(Location.includes('index.html')){
+if(Path == '/' || Path == '/index.html'){
     fadeSetOutTime = 2200
     setTimeout(function(){
         $('.href_transition img').css('display', 'block');

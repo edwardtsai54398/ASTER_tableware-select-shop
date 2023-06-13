@@ -152,7 +152,6 @@
         }
     }
     .tabs_head, .tab{
-        width: 100%;
         height: 20vh;
         background-color: $bg;
         font-size: $font-m;
@@ -189,7 +188,7 @@
 
 @media screen and (min-width: 1500px){
     .tab-stickey .tabs_head{
-        font-size: $font-l;
+        font-size: 24px;
     }
 }
 

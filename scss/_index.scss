@@ -252,12 +252,7 @@
             .img {
                 aspect-ratio: 1/1;
 
-                img {
-                    position: relative;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
+               
             }
         }
     }
@@ -304,13 +299,8 @@
 
 @include pad-V {
     .brand {
-        height: 940px;
         padding-top: 90px;
         padding-bottom: 90px;
-
-        .container {
-            padding-left: 35px;
-        }
 
         h4 {
             font-size: $font-m;
@@ -319,6 +309,9 @@
 }
 
 @include pad-H {
+    .brand{
+        height: 940px;
+    }
     .brand .container {
         display: block;
     }
@@ -395,6 +388,7 @@
 .img-2 {
     @include arched(var(--archdoor-w), 450px);
     margin-bottom: 30px;
+    flex-shrink: 0;
 }
 
 .brand_intro {
@@ -451,6 +445,7 @@
     }
 
     .img-2 {
+        // height: 700px;
         position: absolute;
         top: 7.13%;
         left: 50%;
@@ -911,7 +906,8 @@
                     }
         
                     .date {
-                        text-align: right;
+                        display: flex;
+                        align-items: end;
                         font-size: $font-m;
                         padding: 8px;
                     }
