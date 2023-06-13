@@ -1,8 +1,9 @@
 let fadeSetOutTime = 0
-let Path = window.location.path
+let Path = window.location.pathname
 
 $(document).ready(function () {
-if(Path == '/' || Path == '/index.html'){
+if(Path == '/ASTER_tableware-select-shop/' 
+|| Path == '/ASTER_tableware-select-shop/index.html'){
     fadeSetOutTime = 2200
     setTimeout(function(){
         $('.href_transition img').css('display', 'block');
