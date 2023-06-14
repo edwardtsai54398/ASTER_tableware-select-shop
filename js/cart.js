@@ -1,8 +1,6 @@
 //cart localStorage
-let cartData = JSON.parse(localStorage.getItem('cartData')) || []
 function cartRenderList() {
     let str = ''
-    let productPriceTotal = 0
     $.each(cartData, function (index, item) {
         str += `<li class="cart_item" data-num="${index}">
                 <div class="cart_img"><img src="${item.img}" alt=""></div>
@@ -28,61 +26,62 @@ function cartRenderList() {
     });
     $('.cart_content').html(str)
 
-    // let deleteBtn = document.querySelector('.item-delete')
-    // deleteBtn.addEventListener('click', cartItemDelete)
-    
 }
 
-cartCheckoutTotalCalc()
-function cartCheckoutTotalCalc(){
+function cartCheckoutTotalCalc() {
     let discount = parseInt($('.discount span').text());
     let allPriceTotal = 0
-    $.each(cartData, function (index, item) { 
-         allPriceTotal += item.price * item.amount
+    $.each(cartData, function (index, item) {
+        allPriceTotal += item.price * item.amount
     });
     let checkoutTotal = allPriceTotal - discount
     $('.price-total span').text(checkoutTotal);
 }
 
-function cartItemDelete() {
-    let parentLI = $(this).closest('li')
-    let num = parentLI.data('num')
-    cartData.splice(num, 1)
-    localStorage.setItem('cartData', JSON.stringify(cartData))
-    cartRenderList()
-    cartIconAmount()
-}
+// function cartItemDelete() {
+//     let parentLI = $(this).closest('li')
+//     let index = $(`.cart_content, .cart_item`).index()
+//     cartData.splice(index, 1)
+//     localStorage.setItem('cartData', JSON.stringify(cartData))
+//     cartIconAmount()
+//     cartRenderList()
+//     cartCheckoutTotalCalc()
+// }
 
-function cartSingleItemPriceCalc(){
+function cartSingleItemPriceCalc() {
     let amount = parseInt($('.amount').val());
     let singlePrice = $('.cart_info')
-    $('.cart_price').text(amount*singlePrice)
+    $('.cart_price').text(amount * singlePrice)
 }
 
-function cartIsEmpty(){
+function cartIsEmpty() {
     let Len = cartData.length
-    console.log(Len);
-    if(Len == 0){
-        $('.has_Item').css('display','none')
-        $('.cart_empty').css('display','flex')
-    }else{
-        $('.cart_empty').css('display','none')
-        $('.has_Item').css('display','block')
+    if (Len == 0) {
+        $('.has_Item').css('display', 'none')
+        $('.cart_empty').css('display', 'flex')
+    } else {
+        $('.cart_empty').css('display', 'none')
+        $('.has_Item').css('display', 'block')
     }
 }
-
+let cartData = JSON.parse(localStorage.getItem('cartData')) || []
 $(document).ready(function () {
+
     cartIsEmpty()
     cartRenderList()
-    cartIconAmount()
     cartCheckoutTotalCalc()
 
     $('.item-delete').click(function () {
         let parentLI = $(this).closest('li')
         let num = parentLI.data('num')
-        parentLI.remove()
         cartData.splice(num, 1)
-        
+        parentLI.remove()
+
+        $.each(cartData, function (index, item) {
+            $('.cart_content .cart_item').eq(index).attr('data-num', index)
+        });
+
+
         localStorage.setItem('cartData', JSON.stringify(cartData))
         cartIconAmount()
         cartCheckoutTotalCalc()

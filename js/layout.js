@@ -34,7 +34,7 @@ if(Path == '/ASTER_tableware-select-shop/'
 //判斷 cartData長度並渲染 購物車icon數量
 cartIconAmount()
 function cartIconAmount(){
-    console.log('執行');
+    console.log('IconAmount');
     let cartData = JSON.parse(localStorage.getItem('cartData')) || []
     let Len = cartData.length
     if(Len == 0){

@@ -2972,7 +2972,7 @@ a {
 @media screen and (min-width: 1024px) {
   .cart_modal {
     top: 60px;
-    left: 100%;
+    left: 105%;
     width: 380px;
   }
   .cart_modal.visible {
@@ -4168,9 +4168,6 @@ table {
 .cart_quantity .amount-btn_group {
   margin-bottom: 0;
   margin-right: 30px;
-}
-.cart_quantity .item-delete:hover {
-  animation: bounce 1s ease;
 }
 
 .cart_price {

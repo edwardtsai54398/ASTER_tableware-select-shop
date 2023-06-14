@@ -81,7 +81,6 @@ $('.add_cart button').click(function () {
     }
     cartData.push(newCartItem)
     localStorage.setItem('cartData', JSON.stringify(cartData))
-    console.log(cartData);
     let str = ''
     str += `<div class="img">
                     <img src="${newCartItem.img}" alt="">
@@ -92,9 +91,7 @@ $('.add_cart button').click(function () {
             </div>`
     $('.cart_preitem').html(str)
     $('.view_cart span').text(`(${cartData.length})`)
-    //跳出購物車modal
     $('.cart_modal').addClass('visible');
-    console.log('cli');
     cartIconAmount()
 })
 
@@ -102,10 +99,10 @@ $('.add_cart button').click(function () {
 $('.cart_modal_head i').click(function(){
     $('.cart_modal').removeClass('visible')
 });
-$('body').not($('.add_cart button')).click(function(){
-    console.log('1');
-    if($('.cart_modal').hasClass('visible')){
-        console.log('2');
+$(document).click(function(e){
+    if($(e.target).closest('.cart_modal, .add_cart').length > 0){
+        return
+    }else{
         $('.cart_modal').removeClass('visible')
     }
 

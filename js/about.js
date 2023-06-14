@@ -8,7 +8,7 @@ let offsetTop3 = $('.store_pic').offset().top;
 let pic1Height = $('.intro_pic-1 .img').height();
 let topSpace = (winHeight - pic1Height) / 2
 
-
+//點 circle 畫面滑動
 $('.circle').click(function () {
     let offsetTop = 0
     if ($(this).attr('data-scroll') == '1') {
@@ -39,6 +39,7 @@ let flowerScrollHeight = $('.flower_scroll').height()
 
 $(window).scroll(function () {
     let scrollY = $(window).scrollTop()
+    //scroll spy
     if (scrollY+winHeight/2 <= offsetTop1 + pic1Height) {
         $('[data-scroll="1"]').addClass('invisible');
         $('.flower_scroll .circle').not('[data-scroll="1"]').removeClass('invisible');
@@ -51,11 +52,10 @@ $(window).scroll(function () {
     }
     let circlePosi = $('.invisible').css('top');
     $('.flower').css('top', circlePosi)
+
     let scrollToContainerTop = scrollY - containerOffset.top
     if (scrollToContainerTop >= 0) {
-        if (scrollY <= offsetTop1) {
-            $('.flower_scroll').css('transform', `translateY(${scrollToContainerTop*1.2}px)`)
-        } else if (scrollY > offsetTop2-winHeight) {
+        if (scrollY > offsetTop1 - topSpace) {
             $('.flower_scroll').css('transform', `translateY(${scrollToContainerTop - flwrScrlOriginPosiTop + topSpace + (pic1Height - flowerScrollHeight) / 2}px)`)
             if (scrollY >= offsetTop3 - topSpace) {
                 $('.flower_scroll').css('transform', `translateY(${-flwrScrlOffsetTop + offsetTop3 + (pic1Height - flowerScrollHeight) / 2}px)`)
