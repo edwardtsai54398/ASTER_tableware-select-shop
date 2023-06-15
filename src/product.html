@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTER-Select</title>
+    <link href="image/title_icon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="scss/owlCSS/owl.carousel.min.css">
+    <link rel="stylesheet" href="scss/owlCSS/owl.theme.default.min.css">
+    <link rel="stylesheet" href="scss/all.css">
+</head>
+
+<body class="--product">
+    <div id="app">
+        @@include('layout/header.html')
+        <!-- ------------------ -->
+        <div class="container">
+            <a href="shop.html" class="prev_page"><img src="image/long_arrow_left.svg" alt=""></a>
+            <div class="cart_modal">
+                <div class="cart_modal_head">
+                    <span>商品已加入購物車</span>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                
+                <div class="cart_preitem"></div>
+                <a href="cart.html" class="view_cart">View my cart <span></span></a>
+                <button>Checkout</button>
+            </div>
+            <div class="product_pic">
+                <div class="mainshow">
+                    <img src="image/product/midjourney (9).png" alt="">
+                </div>
+                <div class="showslide">
+                    <!-- <button class="slider-btn" data-direct="left">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button> -->
+                    <div class="owl-carousel owl-theme">
+                        <div class="img item active"><img src="image/product/midjourney (9).png" alt=""></div>
+                        <div class="img item"><img src="image/shopall/midjourney_cup (7).png" alt=""></div>
+                        <div class="img item"><img src="image/shopall/midjourney_cup (3).png" alt=""></div>
+                        <div class="img item"><img src="image/shopall/midjourney_cup (4).png" alt=""></div>
+                        <div class="img item"><img src="image/shopall/midjourney_cup (5).png" alt=""></div>
+                        <div class="img item"><img src="image/shopall/midjourney_cup (6).png" alt=""></div>
+                    </div>
+                    <!-- <button class="slider-btn" data-direct="right">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button> -->
+
+                </div>
+            </div>
+            <div class="product_content">
+                <header>
+                    <h2>Chips Mug馬克杯杯</h2>
+                    <h3>CHIPS</h3>
+                    <p class="price">$<span>560</span></p>
+                    <p>結帳時計算運費</p>
+                </header>
+                <div class="product_choose">
+                    <fieldset class="color_choose">
+                        <legend>color</legend>
+                        <div class="color-btn_group">
+                            <input type="radio" name="color" id="white">
+                            <label for="white">白色</label>
+                            <input type="radio" name="color" id="black">
+                            <label for="black">黑色</label>
+                            <input type="radio" name="color" id="yellow">
+                            <label for="yellow">芥末黃</label>
+                            <input type="radio" name="color" id="brown">
+                            <label for="brown">摩卡咖</label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="quantity">
+                        <legend>quantity</legend>
+                        <div class="amount-btn_group">
+                            <button class="btn-minus unclickable" data-count="minus">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <input class="amount" type="text" value="1" readonly>
+                            <button class="btn-plus" data-count="plus">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+                    <div class="add_cart">
+                        <button>加入購物車</button>
+                    </div>
+                </div>
+                <div class="product_info">
+                    <article>
+                        <p>
+                            簡潔的設計與優雅的陶瓷材質融合，它設計成可堆疊和易握。堆疊收納省空間，方便實用。<br>
+                            這款杯子由日本品牌商CHIPS製作，該公司生產能融入日常生活，講求實用與美感并重的餐具。
+                        </p>
+                    </article>
+                    <article class="accordion">
+                        <input type="checkbox" name="" id="details">
+                        <label for="details">
+                            <h6>product details</h6>
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </label>
+                        <p>
+                            材質: 陶瓷<br>
+                            尺寸: 直徑 17cm·高 4.5cm<br>
+                            可使用: 可使用微波爐·烤箱·洗碗機<br>
+                        </p>
+                    </article>
+                    <article class="accordion">
+                        <input type="checkbox" name="" id="attention">
+                        <label for="attention">
+                            <h6>attention</h6>
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </label>
+                        <p>
+                            本系列陶瓷有些微氣泡·痕跡·小黑點<br>
+                            皆屬於產品製作過程中的正常現象<br>
+                            (下單前務必詳讀後在進行訂購)
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="container recommand">
+            <header class="recommand_title">
+                <h4 class="color-block">你可能會喜歡</h4>
+                <img src="image/dashline_icon.svg" alt="">
+            </header>
+            <ul class="recommand_list">
+                <li class="recommand_item">
+                    <a href="">
+                        <div class="img">
+                            <img src="image/shopall/midjourney_cup (1).png" alt="">
+                        </div>
+                        <div class="name">
+                            <h3>Yanyou yan sake cup</h3>
+                        </div>
+                        <div class="price">
+                            $560
+                        </div>
+                    </a>
+                </li>
+                <li class="recommand_item">
+                    <a href="">
+                        <div class="img">
+                            <img src="image/shopall/midjourney_cup (2).png" alt="">
+                        </div>
+                        <div class="name">
+                            <h3>Yanyou yan sake cup</h3>
+                        </div>
+                        <div class="price">
+                            $560
+                        </div>
+                    </a>
+                </li>
+                <li class="recommand_item">
+                    <a href="">
+                        <div class="img">
+                            <img src="image/shopall/midjourney_plate (2).png" alt="">
+                        </div>
+                        <div class="name">
+                            <h3>Yanyou yan sake cup</h3>
+                        </div>
+                        <div class="price">
+                            $560
+                        </div>
+                    </a>
+                </li>
+                <li class="recommand_item">
+                    <a href="">
+                        <div class="img">
+                            <img src="image/shopall/midjourney_plate (5).png" alt="">
+                        </div>
+                        <div class="name">
+                            <h3>Yanyou yan sake cup</h3>
+                        </div>
+                        <div class="price">
+                            $560
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- ------------------- -->
+        @@include('layout/footer.html')
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/dist/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/product.js"></script>
+</body>
+
+</html>
