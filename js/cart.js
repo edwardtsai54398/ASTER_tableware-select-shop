@@ -28,6 +28,25 @@ function cartRenderList() {
 
 }
 
+
+function amountIsMinMax(amount, target, targetParent){
+    if (amount === 10) {
+        $(target).addClass('unclickable');
+    }else if (amount === 1) {
+        $(target).addClass('unclickable');
+    }
+    if (amount >= 2) {
+        targetParent.find('.btn-minus').removeClass('unclickable');
+    }else if (amount <= 9) {
+        targetParent.find('.btn-plus').removeClass('unclickable');
+    }
+}
+
+function cartSingleItemPriceCalc(amount, target) {
+    let singlePrice = Number(target.find('.cart_info .price span').text())
+    target.find('.cart_price span').text(amount * singlePrice)
+}
+
 function cartCheckoutTotalCalc() {
     let discount = parseInt($('.discount span').text());
     let allPriceTotal = 0
@@ -36,22 +55,6 @@ function cartCheckoutTotalCalc() {
     });
     let checkoutTotal = allPriceTotal - discount
     $('.price-total span').text(checkoutTotal);
-}
-
-// function cartItemDelete() {
-//     let parentLI = $(this).closest('li')
-//     let index = $(`.cart_content, .cart_item`).index()
-//     cartData.splice(index, 1)
-//     localStorage.setItem('cartData', JSON.stringify(cartData))
-//     cartIconAmount()
-//     cartRenderList()
-//     cartCheckoutTotalCalc()
-// }
-
-function cartSingleItemPriceCalc() {
-    let amount = parseInt($('.amount').val());
-    let singlePrice = $('.cart_info')
-    $('.cart_price').text(amount * singlePrice)
 }
 
 function cartIsEmpty() {
@@ -64,6 +67,7 @@ function cartIsEmpty() {
         $('.has_Item').css('display', 'block')
     }
 }
+
 let cartData = JSON.parse(localStorage.getItem('cartData')) || []
 $(document).ready(function () {
 
@@ -87,31 +91,31 @@ $(document).ready(function () {
         cartCheckoutTotalCalc()
         cartIsEmpty()
     });
-
+   
     //quantityBtnChange
-    $('.amount-btn_group button').click(function () {
-        let amountValue = parseInt($('.amount').val())
-        if ($(this).data('count') === 'minus' &&
+    $('.amount-btn_group button').click(function (e) {
+        let cartItemTarget = $(e.currentTarget).closest('.cart_item')
+        let amountInput = cartItemTarget.find('.amount')
+        let amountValue = Number(amountInput.val())
+        let targetBtn = e.currentTarget
+        if ($(e.currentTarget).data('count') === 'minus' &&
             amountValue > 1) {
-            if (amountValue === 10) {
-                $('.btn-plus').removeClass('unclickable');
-            }
-            $('.amount').val(amountValue - 1);
+            amountInput.val(amountValue - 1);
             amountValue--
-            if (amountValue === 1) {
-                $(this).addClass('unclickable');
-            }
-        } else if ($(this).data('count') === 'plus' &&
+            
+        } else if ($(e.currentTarget).data('count') === 'plus' &&
             amountValue < 10) {
-            if (amountValue === 1) {
-                $('.btn-minus').removeClass('unclickable');
-            }
-            $('.amount').val(amountValue + 1);
+            amountInput.val(amountValue + 1);
             amountValue++
-            if (amountValue === 10) {
-                $(this).addClass('unclickable');
-            }
+            
         }
-        cartSingleItemPriceCalc()
-    });
+        //amountIsMinMax 分出來，amountValue變數帶進去
+        amountIsMinMax(amountValue, targetBtn, cartItemTarget)
+        
+        //cartItemTarget, amountValue變數帶進cartSingleItemPriceCalc()
+        cartSingleItemPriceCalc(amountValue, cartItemTarget)
+        //更改 cartData[i].amount數量，更新 localStorage
+        //cartCheckoutTotalCalc()
+    })
 });
+
