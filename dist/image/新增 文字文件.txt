@@ -1,0 +1,1 @@
+https://cdn.midjourney.com/83d20d46-a1f7-4f54-b223-c5ff5f1461f4/0_2.png mocha brown mug with low height and 5 angles on its handle, low contrast, use the same perspective, clean white or light pink or beige background, no dark shadow, ultra realistic, photo realistic --ar 2:3 --v 5

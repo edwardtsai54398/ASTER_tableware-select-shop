@@ -26,7 +26,17 @@ function moveJs(){
 function moveCSS(){
     return src('src/scss/**/*.min.css').pipe(dest('dist/css'))
 }
-exports.mv = series(moveJs, moveCSS)
+
+function moveImg(){
+    return src(['src/image/*.*', 'src/image/**/*.*']).pipe(dest('dist/image'))
+     
+}
+exports.mv = series(moveJs, moveCSS, moveImg)
+
+//move image
+
+
+
 
 
 //css 壓縮
