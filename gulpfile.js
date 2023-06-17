@@ -7,7 +7,7 @@ const {
 } = require('gulp')
 
 //function 任務
-function defaultTask(cb){
+function defaultTask(cb) {
     console.log('gulp ok');
     cb()
 }
@@ -18,18 +18,18 @@ exports.log = defaultTask
 
 
 
-function moveJs(){
+function moveJs() {
     return src('src/js/dist/*.min.js').pipe(dest('dist/js'))
-     
+
 }
 
-function moveCSS(){
+function moveCSS() {
     return src('src/scss/**/*.min.css').pipe(dest('dist/css'))
 }
 
-function moveImg(){
+function moveImg() {
     return src(['src/image/*.*', 'src/image/**/*.*']).pipe(dest('dist/image'))
-     
+
 }
 exports.mv = series(moveJs, moveCSS, moveImg)
 
@@ -43,14 +43,33 @@ exports.mv = series(moveJs, moveCSS, moveImg)
 
 const cleanCSS = require('gulp-clean-css')
 
-function minicss(){
+function minicss() {
     return src('src/scss/all.css')
-    .pipe(cleanCSS())
-    .pipe(dest('dist/css'))
-    
+        .pipe(cleanCSS())
+        .pipe(dest('dist/css'))
+
 }
 
-exports.style = minicss
+exports.mini = minicss
+
+
+//sass compiler
+
+const sass = require('gulp-sass')(require('sass'));
+
+
+function compileSass() {
+    return src('src/scss/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(cleanCSS())
+        .pipe(dest('dist/css'));
+}
+
+exports.sass = compileSass
+
+
 
 //js
 const uglify = require('gulp-uglify')
@@ -58,30 +77,59 @@ const rename = require('gulp-rename');
 
 function ugjs() {
     return src('src/js/*.js').pipe(uglify()).pipe(rename({
-      extname: '.min.js'
+        extname: '.min.js'
     })).pipe(dest('dist/js'))
 }
 
 exports.ug = ugjs
 
+
 //html 合併
 
 const fileinclude = require('gulp-file-include')
-function htmlBind(){
+
+const gulpIf = require('gulp-if')
+const path = require('path')
+
+function htmlBind() {
     return src('src/*.html')
-    .pipe(fileinclude({
-        prefix: '@@',
-        basepath: '@file'
-    }))
-    .pipe(dest('dist/'))
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file',
+            context: {
+                page: getPageVar()
+            }
+        }))
+        .pipe(dest('dist/'))
+}
+
+
+function getPageVar() {
+    
+    let fileName = path.basename('src/*.html', '.html');
+    if (fileName == 'index') {
+        return 'index'
+    } else if (fileName == 'shop' || fileName == 'product') {
+        return 'shop'
+    } else if (fileName == 'journal' || fileName == 'article') {
+        return 'journal'
+    }else if(fileName == 'login'){
+        return 'login'
+    }else if(fileName == 'register'){
+        return 'register'
+    }else if(fileName == 'cart'){
+        return 'cart'
+    }else{
+        return 'fail'
+    }
 }
 
 exports.template = htmlBind
 
 //監看所有變動
 
-function taskWatch(){
-    watch('src/sass/all.css')
+function taskWatch() {
+    watch('src/scss/all.css', minicss)
     watch(['src/*.html', 'src/layout/*.html'], htmlBind)
 }
 
