@@ -1,7 +1,8 @@
-# 鮮食空投箱 FreshDrop
+# ASTER-Select 餐具選品店
 
 ## 網站介紹：
-鮮食空投箱是一個虛擬的鮮食訂購平台。使用者可以選購菜色，然後在家收到簡單快速料理的鮮食食材包，以解決現代人忙碌沒時間烹煮和購買食材的問題。<br>
+一個虛擬的餐具選品店網站。緯育前端培訓班個人專題發表。<br>
+因 UI 設計、互動效果與功能兼具，被同學和老師評為最佳網站。<br>
 <a href="https://edwardtsai54398.github.io/ASTER_tableware-select-shop/" target="blank">展示頁面 Display page</a>
 
 ## 使用技術：
